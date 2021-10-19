@@ -2,23 +2,16 @@ export async function getClockworkData({
   clockworkToken,
   startDate,
   endDate,
-  projectKey,
-  userEmail,
+  jiraProjectKey,
+  email,
 }) {
-  console.log(`getClockworkData function called with parameters:`, {
-    clockworkToken,
-    startDate,
-    endDate,
-    projectKey,
-    userEmail,
-  });
   // Clockwork docs https://herocoders.atlassian.net/wiki/spaces/CLK/pages/2999975967/Use+the+Clockwork+API
   const url = new URL("https://api.clockwork.report/v1/worklogs");
   const params = {
     starting_at: startDate,
     ending_at: endDate,
-    "project_keys[]": projectKey,
-    "user_query[]": userEmail,
+    "project_keys[]": jiraProjectKey,
+    "user_query[]": email,
     expand: "issues",
   };
   url.search = new URLSearchParams(params).toString();
@@ -28,10 +21,14 @@ export async function getClockworkData({
     },
   });
   const data = await response.json();
-
+  if (Array.isArray(data)) {
+    console.info(
+      `Clockwork data has been successfully downloaded, found ${data.length} entries.`
+    );
+  }
   return data.map(({ timeSpentSeconds, issue, started }) => {
     return {
-      issue: issue.key,
+      ticket: issue.key,
       title: issue.fields.summary,
       hours: timeSpentSeconds / 3600,
       date: started.substr(0, 10),

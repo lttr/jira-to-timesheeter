@@ -1,0 +1,7 @@
+{
+  "clockworkToken": "abc",
+  "email": "example@hanaboso.com",
+  "password": "12345",
+  "jiraProjectKey": "PACWEB",
+  "projectId": "42"
+}
