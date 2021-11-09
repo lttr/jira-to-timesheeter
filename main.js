@@ -20,14 +20,14 @@ export async function main(params, dryRun = false) {
 }
 
 function logParameters({
-  email,
+  timesheeterEmail,
   jiraProjectKey,
   timesheeterProjectId,
   startDate,
   endDate,
 }) {
   console.info(
-    `Params are { email: ${email}, jiraProjectKey: ${jiraProjectKey}, timesheeterProjectId: ${timesheeterProjectId} }`
+    `Params are { timesheeterEmail: ${timesheeterEmail}, jiraProjectKey: ${jiraProjectKey}, timesheeterProjectId: ${timesheeterProjectId} }`
   );
   console.info(`Processing dates between ${startDate} and ${endDate}`);
 }

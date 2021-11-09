@@ -1,10 +1,24 @@
 export async function fillTimesheeter(
   data,
-  { email, password, timesheeterProjectId, startDate, endDate },
+  {
+    timesheeterEmail,
+    timesheeterPassword,
+    timesheeterProjectId,
+    startDate,
+    endDate,
+  },
   dryRun
 ) {
-  const sessionCookie = await logIntoTimesheeter(email, password);
-  const records = await listRecords(sessionCookie, email, startDate, endDate);
+  const sessionCookie = await logIntoTimesheeter(
+    timesheeterEmail,
+    timesheeterPassword
+  );
+  const records = await listRecords(
+    sessionCookie,
+    timesheeterEmail,
+    startDate,
+    endDate
+  );
   const toBeInserted = data.filter((item) => {
     return !records.items.find((record) => {
       const condition =
@@ -27,11 +41,11 @@ export async function fillTimesheeter(
       );
       continue;
     }
-    await postItem(item, timesheeterProjectId, sessionCookie, email);
+    await postItem(item, timesheeterProjectId, sessionCookie, timesheeterEmail);
   }
 }
 
-async function postItem(item, timesheeterProjectId, cookie, email) {
+async function postItem(item, timesheeterProjectId, cookie, timesheeterEmail) {
   const payload = {
     homeOffice: true,
     desc: item.title,
@@ -50,7 +64,7 @@ async function postItem(item, timesheeterProjectId, cookie, email) {
       headers: {
         "Content-Type": "application/json",
         Cookie: `${cookie.name}=${cookie.value}`,
-        Authorization: email,
+        Authorization: timesheeterEmail,
       },
     }
   );
@@ -62,12 +76,15 @@ async function postItem(item, timesheeterProjectId, cookie, email) {
   }
 }
 
-async function logIntoTimesheeter(email, password) {
+async function logIntoTimesheeter(timesheeterEmail, timesheeterPassword) {
   const response = await fetch("https://timesheeter-api.hanaboso.net/login", {
     headers: {
       accept: "application/json",
     },
-    body: JSON.stringify({ email, password }),
+    body: JSON.stringify({
+      email: timesheeterEmail,
+      password: timesheeterPassword,
+    }),
     method: "POST",
   });
   if (response.status !== 200) {
@@ -104,14 +121,14 @@ async function logIntoTimesheeter(email, password) {
     },
   ];
  */
-async function listRecords(cookie, email, startDate, endDate) {
+async function listRecords(cookie, timesheeterEmail, startDate, endDate) {
   const response = await fetch(
     `https://timesheeter-api.hanaboso.net/record/list?filter={%22filter%22:[[{%22column%22:%22date%22,%22operator%22:%22BETWEEN%22,%22value%22:[%22${startDate}%22,%22${endDate}%22]}]],%22sorter%22:[{%22column%22:%22date%22,%22direction%22:%22DESC%22}],%22paging%22:{%22page%22:1,%22itemsPerPage%22:1000},%22search%22:null,%22params%22:null}`,
     {
       method: "GET",
       headers: {
         Cookie: `${cookie.name}=${cookie.value}`,
-        Authorization: email,
+        Authorization: timesheeterEmail,
       },
     }
   );

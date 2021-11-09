@@ -3,7 +3,7 @@ export async function getClockworkData({
   startDate,
   endDate,
   jiraProjectKey,
-  email,
+  timesheeterEmail,
 }) {
   // Clockwork docs https://herocoders.atlassian.net/wiki/spaces/CLK/pages/2999975967/Use+the+Clockwork+API
   const url = new URL("https://api.clockwork.report/v1/worklogs");
@@ -11,7 +11,7 @@ export async function getClockworkData({
     starting_at: startDate,
     ending_at: endDate,
     "project_keys[]": jiraProjectKey,
-    "user_query[]": email,
+    "user_query[]": timesheeterEmail,
     expand: "issues",
   };
   url.search = new URLSearchParams(params).toString();
