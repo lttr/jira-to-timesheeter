@@ -1,6 +1,6 @@
 export async function fillTimesheeter(
   data,
-  { email, password, projectId, startDate, endDate },
+  { email, password, timesheeterProjectId, startDate, endDate },
   dryRun
 ) {
   const sessionCookie = await logIntoTimesheeter(email, password);
@@ -27,15 +27,15 @@ export async function fillTimesheeter(
       );
       continue;
     }
-    await postItem(item, projectId, sessionCookie, email);
+    await postItem(item, timesheeterProjectId, sessionCookie, email);
   }
 }
 
-async function postItem(item, projectId, cookie, email) {
+async function postItem(item, timesheeterProjectId, cookie, email) {
   const payload = {
     homeOffice: true,
     desc: item.title,
-    project: projectId,
+    project: timesheeterProjectId,
     ticket: item.ticket,
     date: item.date,
     startTime: null,

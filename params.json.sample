@@ -1,7 +1,7 @@
 {
   "clockworkToken": "abc",
-  "email": "example@hanaboso.com",
-  "password": "12345",
-  "jiraProjectKey": "PACWEB",
-  "projectId": "42"
+  "jiraProjectKey": "KEY",
+  "timesheeterEmail": "hello@example.com",
+  "timesheeterPassword": "12345",
+  "timesheeterProjectId": "123"
 }
