@@ -4,7 +4,7 @@ import { getClockworkData } from "./jira.js";
 import { fillTimesheeter } from "./timesheeter.js";
 
 export async function main(params, dryRun = false) {
-  const weekAgo = Temporal.Now.plainDateISO().subtract({ weeks: 1 }).toString();
+  const weekAgo = Temporal.Now.plainDateISO().subtract({ days: 10 }).toString();
   const today = Temporal.Now.plainDateISO().toString();
   const paramsWithDates = {
     startDate: weekAgo,
