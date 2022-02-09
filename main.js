@@ -1,13 +1,11 @@
-import { Temporal } from "https://cdn.skypack.dev/@js-temporal/polyfill";
+import { tenDaysAgo, today } from "./utils.js";
 
 import { getClockworkData } from "./jira.js";
 import { fillTimesheeter } from "./timesheeter.js";
 
 export async function main(params, dryRun = false) {
-  const weekAgo = Temporal.Now.plainDateISO().subtract({ days: 10 }).toString();
-  const today = Temporal.Now.plainDateISO().toString();
   const paramsWithDates = {
-    startDate: weekAgo,
+    startDate: tenDaysAgo,
     endDate: today,
     ...params,
   };

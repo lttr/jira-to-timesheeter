@@ -1,0 +1,5 @@
+{
+  "imports": {
+    "html": "https://cdn.skypack.dev/uhtml-ssr"
+  }
+}

@@ -22,10 +22,10 @@ deno run -A --unstable local.js --dry-run
 
 ### Server
 
-A server can be started with 
+A server can be started (with autoreload)
 
 ```
-deno run -A --unstable server.js
+make dev
 ```
 
 Or deploy it to Deno Deploy.

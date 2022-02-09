@@ -1,8 +1,5 @@
 import { main } from "./main.js";
-
-async function getParams(filePath) {
-  return JSON.parse(await Deno.readTextFile(filePath));
-}
+import { getParams } from "./utils.js";
 
 const params = await getParams("./params.json");
 
