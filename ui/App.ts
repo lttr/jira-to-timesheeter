@@ -2,12 +2,15 @@ import { html } from "../deps.ts";
 import { tenDaysAgo, today } from "../utils.ts";
 import { getClockworkData } from "../jira.ts";
 import { DataTable } from "./DataTable.ts";
+import { InputParams } from "../types.ts";
 
-function App(data) {
-  return html`<div class="container">${DataTable(data)}</div>`;
+async function App(params: InputParams) {
+  // const jiraData = await jira(params);
+  const jiraData = dummyData;
+  return html`<div class="container">${DataTable(jiraData)}</div>`;
 }
 
-async function jira(params) {
+async function jira(params: InputParams) {
   const data = await getClockworkData({
     startDate: tenDaysAgo,
     endDate: today,
@@ -83,9 +86,7 @@ const dummyData = [
   },
 ];
 
-export async function renderApp(params) {
-  // const jiraData = await jira(params);
-  const jiraData = dummyData;
+export async function renderApp(params: InputParams) {
   const output = html`<!DOCTYPE html>
     <html>
       <head>
@@ -98,7 +99,7 @@ export async function renderApp(params) {
         />
       </head>
       <body>
-        ${App(jiraData)}
+        ${App(params)}
       </body>
     </html>`;
   return output;

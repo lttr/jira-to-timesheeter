@@ -2,8 +2,9 @@ import { tenDaysAgo, today } from "./utils.ts";
 
 import { getClockworkData } from "./jira.ts";
 import { fillTimesheeter } from "./timesheeter.ts";
+import { InputParams, ParamsWithInterval } from "./types.ts";
 
-export async function main(params, dryRun = false) {
+export async function main(params: InputParams, dryRun = false) {
   const paramsWithDates = {
     startDate: tenDaysAgo,
     endDate: today,
@@ -23,7 +24,7 @@ function logParameters({
   timesheeterProjectId,
   startDate,
   endDate,
-}) {
+}: ParamsWithInterval) {
   console.info(
     `Params are { timesheeterEmail: ${timesheeterEmail}, jiraProjectKey: ${jiraProjectKey}, timesheeterProjectId: ${timesheeterProjectId} }`
   );

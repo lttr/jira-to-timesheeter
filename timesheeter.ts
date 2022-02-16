@@ -1,33 +1,35 @@
+import { Cookie, ParamsWithInterval, Ticket } from "./types.ts";
+
 export async function fillTimesheeter(
-  data,
+  inputData: Ticket[],
   {
     timesheeterEmail,
     timesheeterPassword,
     timesheeterProjectId,
     startDate,
     endDate,
-  },
-  dryRun
-) {
+  }: ParamsWithInterval,
+  dryRun: boolean
+): Promise<void> {
   const sessionCookie = await logIntoTimesheeter(
     timesheeterEmail,
     timesheeterPassword
   );
-  const records = await listRecords(
+  const existingTickets: Ticket[] = await listRecords(
     sessionCookie,
     timesheeterEmail,
     startDate,
     endDate
   );
-  const toBeInserted = data.filter((item) => {
-    return !records.items.find((record) => {
+  const toBeInserted = inputData.filter((inputTicket) => {
+    return !existingTickets.find((existingTicket) => {
       const condition =
-        record.ticket.endsWith(item.ticket) &&
-        record.date.date.startsWith(item.date) &&
-        item.hours === record.time;
+        existingTicket.ticket.endsWith(inputTicket.ticket) &&
+        existingTicket.date.startsWith(inputTicket.date) &&
+        inputTicket.hours === existingTicket.hours;
       if (condition) {
         console.warn(
-          `An entry for ${item.date} ticket ${item.ticket} duration ${item.hours} hours is already in Timesheeter.`
+          `An entry for ${inputTicket.date} ticket ${inputTicket.ticket} duration ${inputTicket.hours} hours is already in Timesheeter.`
         );
       }
       return condition;
@@ -45,16 +47,21 @@ export async function fillTimesheeter(
   }
 }
 
-async function postItem(item, timesheeterProjectId, cookie, timesheeterEmail) {
+async function postItem(
+  ticket: Ticket,
+  timesheeterProjectId: string,
+  cookie: Cookie,
+  timesheeterEmail: string
+) {
   const payload = {
     homeOffice: true,
-    desc: item.title,
+    desc: ticket.title,
     project: timesheeterProjectId,
-    ticket: item.ticket,
-    date: item.date,
+    ticket: ticket.ticket,
+    date: ticket.date,
     startTime: null,
     finishTime: null,
-    time: item.hours,
+    time: ticket.hours,
   };
   const response = await fetch(
     "https://timesheeter-api.hanaboso.net/record/add",
@@ -71,12 +78,15 @@ async function postItem(item, timesheeterProjectId, cookie, timesheeterEmail) {
   const result = response.status;
   if (result === 201) {
     console.info(
-      `An entry for ${item.date} ticket ${item.ticket} duration ${item.hours} hours was inserted into Timesheeter.`
+      `An entry for ${ticket.date} ticket ${ticket.ticket} duration ${ticket.hours} hours was inserted into Timesheeter.`
     );
   }
 }
 
-async function logIntoTimesheeter(timesheeterEmail, timesheeterPassword) {
+async function logIntoTimesheeter(
+  timesheeterEmail: string,
+  timesheeterPassword: string
+) {
   const response = await fetch("https://timesheeter-api.hanaboso.net/login", {
     headers: {
       accept: "application/json",
@@ -91,12 +101,14 @@ async function logIntoTimesheeter(timesheeterEmail, timesheeterPassword) {
     throw new Error("Login to Timesheeter was not successful.");
   }
   console.log("Login to Timesheeter was successful.");
-  const cookies = response.headers.get("set-cookie");
-  const cookieNameAndValue = cookies.split(";")[0].split("=");
-  return {
-    name: cookieNameAndValue[0],
-    value: cookieNameAndValue[1],
-  };
+  const cookies: string | null = response.headers.get("set-cookie");
+  if (cookies) {
+    const [name, value] = cookies.split(";")[0].split("=");
+    return { name, value };
+  } else {
+    console.error("Cookies was expected");
+    return { name: "", value: "" };
+  }
 }
 
 /**
@@ -121,7 +133,12 @@ async function logIntoTimesheeter(timesheeterEmail, timesheeterPassword) {
     },
   ];
  */
-async function listRecords(cookie, timesheeterEmail, startDate, endDate) {
+async function listRecords(
+  cookie: { name: string; value: string },
+  timesheeterEmail: string,
+  startDate: string,
+  endDate: string
+): Promise<Ticket[]> {
   const response = await fetch(
     `https://timesheeter-api.hanaboso.net/record/list?filter={%22filter%22:[[{%22column%22:%22date%22,%22operator%22:%22BETWEEN%22,%22value%22:[%22${startDate}%22,%22${endDate}%22]}]],%22sorter%22:[{%22column%22:%22date%22,%22direction%22:%22DESC%22}],%22paging%22:{%22page%22:1,%22itemsPerPage%22:1000},%22search%22:null,%22params%22:null}`,
     {
@@ -132,6 +149,13 @@ async function listRecords(cookie, timesheeterEmail, startDate, endDate) {
       },
     }
   );
-  const data = await response.json();
-  return data;
+  const data: any[] = await response.json();
+  return data.map((ticket) => {
+    return {
+      ticket: ticket.ticket,
+      title: ticket.desc,
+      hours: ticket.time,
+      date: ticket.date.date,
+    };
+  });
 }

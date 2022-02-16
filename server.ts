@@ -3,7 +3,7 @@ import { renderApp } from "./ui/App.ts";
 import { main } from "./main.ts";
 import { getParams } from "./utils.ts";
 
-async function handleRequest(request) {
+async function handleRequest(request: Request) {
   if (request.method === "POST") {
     const params = await request.json();
     const result = await main(params);

@@ -5,6 +5,6 @@ export const tenDaysAgo = Temporal.Now.plainDateISO()
   .toString();
 export const today = Temporal.Now.plainDateISO().toString();
 
-export async function getParams(filePath) {
+export async function getParams(filePath: string) {
   return JSON.parse(await Deno.readTextFile(filePath));
 }

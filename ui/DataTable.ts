@@ -1,4 +1,5 @@
-import { html } from "../deps.ts";
+import { html, Temporal } from "../deps.ts";
+import { DatesToTicketsMap, Ticket } from "../types.ts";
 import {
   dateRange,
   today,
@@ -10,8 +11,8 @@ import {
 } from "./holidays.ts";
 import { TicketsList } from "./TicketsList.ts";
 
-function mapDatesToTickets(data, range) {
-  const result = {};
+function mapDatesToTickets(data: Ticket[], range: Temporal.PlainDate[]) {
+  const result: DatesToTicketsMap = {};
   for (const date of range) {
     result[date.toString()] = [];
   }
@@ -23,7 +24,7 @@ function mapDatesToTickets(data, range) {
 
 const TARGET = 7;
 
-export function DataTable(jiraData) {
+export function DataTable(jiraData: Ticket[]) {
   const rangeOfPlainDates = dateRange(tenDaysAgo, today);
   const ticketsByDate = mapDatesToTickets(jiraData, rangeOfPlainDates);
   const holidayClass = "bg-secondary bg-opacity-10";
@@ -98,7 +99,10 @@ export function DataTable(jiraData) {
   `;
 }
 
-function TotalHoursForDate(ticketsByDate, currentDate) {
+function TotalHoursForDate(
+  ticketsByDate: DatesToTicketsMap,
+  currentDate: Temporal.PlainDate
+) {
   const total = ticketsByDate[currentDate.toString()].reduce(
     (acc, curr) => curr.hours + acc,
     0

@@ -1,10 +1,21 @@
+import { ParamsWithInterval, Ticket } from "./types.ts";
+
+interface ClockworkResponse {
+  timeSpentSeconds: number;
+  issue: {
+    key: string;
+    fields: { summary: string };
+  };
+  started: string;
+}
+
 export async function getClockworkData({
   clockworkToken,
-  startDate,
   endDate,
   jiraProjectKey,
+  startDate,
   timesheeterEmail,
-}) {
+}: ParamsWithInterval): Promise<Ticket[]> {
   // Clockwork docs https://herocoders.atlassian.net/wiki/spaces/CLK/pages/2999975967/Use+the+Clockwork+API
   const url = new URL("https://api.clockwork.report/v1/worklogs");
   const params = {
@@ -26,7 +37,7 @@ export async function getClockworkData({
       `Clockwork data has been successfully downloaded, found ${data.length} entries.`
     );
   }
-  return data.map(({ timeSpentSeconds, issue, started }) => {
+  return data.map(({ timeSpentSeconds, issue, started }: ClockworkResponse) => {
     return {
       ticket: issue.key,
       title: issue.fields.summary,

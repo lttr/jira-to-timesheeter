@@ -1,6 +1,10 @@
-import { html } from "../deps.ts";
+import { html, Temporal } from "../deps.ts";
+import { DatesToTicketsMap } from "../types.ts";
 
-export function TicketsList(ticketsByDate, currentDate) {
+export function TicketsList(
+  ticketsByDate: DatesToTicketsMap,
+  currentDate: Temporal.PlainDate
+) {
   return html`<ul class="list-group">
     ${ticketsByDate[currentDate.toString()].map(
       (item) => html`<li class="list-group-item fs-6 lh-sm p-1">
