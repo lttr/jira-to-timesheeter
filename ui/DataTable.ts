@@ -19,14 +19,23 @@ function mapDatesToTickets(data: Ticket[], range: Temporal.PlainDate[]) {
   for (const item of data) {
     result[item.date]?.push(item);
   }
+  for (const date of range) {
+    result[date.toString()].sort((a, b) =>
+      new Intl.Collator([], { numeric: true }).compare(a.ticket, b.ticket)
+    );
+  }
   return result;
 }
 
 const TARGET = 7;
 
-export function DataTable(jiraData: Ticket[]) {
+export function DataTable(jiraData: Ticket[], timesheeterData: Ticket[]) {
   const rangeOfPlainDates = dateRange(tenDaysAgo, today);
-  const ticketsByDate = mapDatesToTickets(jiraData, rangeOfPlainDates);
+  const jiraTicketsByDate = mapDatesToTickets(jiraData, rangeOfPlainDates);
+  const timesheeterTicketsByDate = mapDatesToTickets(
+    timesheeterData,
+    rangeOfPlainDates
+  );
   const holidayClass = "bg-secondary bg-opacity-10";
   return html`
     <div class="table-responsive" id="table-wrapper">
@@ -52,7 +61,7 @@ export function DataTable(jiraData: Ticket[]) {
             ${rangeOfPlainDates.map(
               (currentDate) =>
                 html`<td class=${isHoliday(currentDate) && holidayClass}>
-                  ${TicketsList(ticketsByDate, currentDate)}
+                  ${TicketsList(jiraTicketsByDate, currentDate)}
                 </td>`
             )}
           </tr>
@@ -62,7 +71,26 @@ export function DataTable(jiraData: Ticket[]) {
               (currentDate) => html`<td
                 class=${isHoliday(currentDate) && holidayClass}
               >
-                ${TotalHoursForDate(ticketsByDate, currentDate)}
+                ${TotalHoursForDate(jiraTicketsByDate, currentDate)}
+              </td>`
+            )}
+          </tr>
+          <tr>
+            <th scope="row">Timesheeter</th>
+            ${rangeOfPlainDates.map(
+              (currentDate) =>
+                html`<td class=${isHoliday(currentDate) && holidayClass}>
+                  ${TicketsList(timesheeterTicketsByDate, currentDate)}
+                </td>`
+            )}
+          </tr>
+          <tr>
+            <th scope="row">Timesheeter total</th>
+            ${rangeOfPlainDates.map(
+              (currentDate) => html`<td
+                class=${isHoliday(currentDate) && holidayClass}
+              >
+                ${TotalHoursForDate(timesheeterTicketsByDate, currentDate)}
               </td>`
             )}
           </tr>
@@ -109,8 +137,8 @@ function TotalHoursForDate(
   );
   return html`<span
     class=${`d-inline-block text-end p-1
-      ${total >= TARGET && isWorkDay(currentDate) && "bg-danger bg-opacity-25"}
-      ${total <= TARGET && isWorkDay(currentDate) && "bg-warning bg-opacity-25"}
+      ${total > TARGET && isWorkDay(currentDate) && "bg-danger bg-opacity-25"}
+      ${total < TARGET && isWorkDay(currentDate) && "bg-warning bg-opacity-25"}
     `}
     style="width: 17ch"
     >${total}h

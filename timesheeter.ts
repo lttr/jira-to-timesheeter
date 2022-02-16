@@ -83,7 +83,7 @@ async function postItem(
   }
 }
 
-async function logIntoTimesheeter(
+export async function logIntoTimesheeter(
   timesheeterEmail: string,
   timesheeterPassword: string
 ) {
@@ -133,7 +133,7 @@ async function logIntoTimesheeter(
     },
   ];
  */
-async function listRecords(
+export async function listRecords(
   cookie: { name: string; value: string },
   timesheeterEmail: string,
   startDate: string,
@@ -149,13 +149,12 @@ async function listRecords(
       },
     }
   );
-  const data: any[] = await response.json();
-  return data.map((ticket) => {
-    return {
-      ticket: ticket.ticket,
-      title: ticket.desc,
-      hours: ticket.time,
-      date: ticket.date.date,
-    };
-  });
+  const data: { items: any[] } = await response.json();
+  const mappedData = data.items.map((ticket) => ({
+    ticket: ticket.ticket,
+    title: ticket.desc,
+    hours: ticket.time,
+    date: ticket.date.date.slice(0, 10),
+  }));
+  return mappedData;
 }

@@ -2,12 +2,17 @@ import { html } from "../deps.ts";
 import { tenDaysAgo, today } from "../utils.ts";
 import { getClockworkData } from "../jira.ts";
 import { DataTable } from "./DataTable.ts";
-import { InputParams } from "../types.ts";
+import { InputParams, Ticket } from "../types.ts";
+import { logIntoTimesheeter, listRecords } from "../timesheeter.ts";
 
 async function App(params: InputParams) {
-  // const jiraData = await jira(params);
-  const jiraData = dummyData;
-  return html`<div class="container">${DataTable(jiraData)}</div>`;
+  const jiraData = await jira(params);
+  // const jiraData = dummyData;
+  const timesheeterData = await timesheeter(params);
+  // const timesheeterData = dummyData;
+  return html`<div class="container-fluid">
+    ${DataTable(jiraData, timesheeterData)}
+  </div>`;
 }
 
 async function jira(params: InputParams) {
@@ -17,6 +22,28 @@ async function jira(params: InputParams) {
     ...params,
   });
   return data;
+}
+
+async function timesheeter({
+  timesheeterEmail,
+  timesheeterPassword,
+}: InputParams): Promise<Ticket[]> {
+  const startDate = tenDaysAgo;
+  const endDate = today;
+  const sessionCookie = await logIntoTimesheeter(
+    timesheeterEmail,
+    timesheeterPassword
+  );
+  const existingTickets: Ticket[] = await listRecords(
+    sessionCookie,
+    timesheeterEmail,
+    startDate,
+    endDate
+  );
+  return existingTickets.map((ticket) => ({
+    ...ticket,
+    ticket: ticket.ticket.replace("ZAS-WEB-", ""),
+  }));
 }
 
 const dummyData = [
