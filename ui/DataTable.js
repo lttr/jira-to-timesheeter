@@ -1,4 +1,4 @@
-import { html } from "html";
+import { html } from "../deps.js";
 import {
   dateRange,
   today,
@@ -8,6 +8,7 @@ import {
   isHoliday,
   isWorkDay,
 } from "./holidays.js";
+import { TicketsList } from "./TicketsList.js";
 
 function mapDatesToTickets(data, range) {
   const result = {};
@@ -24,30 +25,10 @@ const TARGET = 7;
 
 export function DataTable(jiraData) {
   const rangeOfPlainDates = dateRange(tenDaysAgo, today);
-  const jiraTicketsByDate = mapDatesToTickets(jiraData, rangeOfPlainDates);
+  const ticketsByDate = mapDatesToTickets(jiraData, rangeOfPlainDates);
   const holidayClass = "bg-secondary bg-opacity-10";
   return html`
-    <style>
-      .table-responsive thead th {
-        position: sticky;
-        top: 0;
-        z-index: 1;
-        background: white;
-      }
-      .table-responsive thead th:first-child {
-        position: sticky;
-        left: 0;
-        z-index: 2;
-        background: white;
-      }
-      .table-responsive tbody th {
-        position: sticky;
-        left: 0;
-        z-index: 1;
-        background: white;
-      }
-    </style>
-    <div class="table-responsive">
+    <div class="table-responsive" id="table-wrapper">
       <table class="table">
         <thead>
           <tr>
@@ -70,7 +51,7 @@ export function DataTable(jiraData) {
             ${rangeOfPlainDates.map(
               (currentDate) =>
                 html`<td class=${isHoliday(currentDate) && holidayClass}>
-                  ${ListOfTickets(jiraTicketsByDate, currentDate)}
+                  ${TicketsList(ticketsByDate, currentDate)}
                 </td>`
             )}
           </tr>
@@ -80,18 +61,45 @@ export function DataTable(jiraData) {
               (currentDate) => html`<td
                 class=${isHoliday(currentDate) && holidayClass}
               >
-                ${TotalJiraHoursForDate(jiraTicketsByDate, currentDate)}
+                ${TotalHoursForDate(ticketsByDate, currentDate)}
               </td>`
             )}
           </tr>
         </tbody>
       </table>
     </div>
+
+    <script>
+      const tableWrapper = document.querySelector("#table-wrapper");
+      const table = tableWrapper.querySelector("table");
+      tableWrapper.scrollTo({ left: table.offsetWidth });
+    </script>
+
+    <style>
+      .table-responsive thead th {
+        position: sticky;
+        top: 0;
+        z-index: 1;
+        background: white;
+      }
+      .table-responsive thead th:first-child {
+        position: sticky;
+        left: 0;
+        z-index: 2;
+        background: white;
+      }
+      .table-responsive tbody th {
+        position: sticky;
+        left: 0;
+        z-index: 1;
+        background: white;
+      }
+    </style>
   `;
 }
 
-function TotalJiraHoursForDate(jiraTicketsByDate, currentDate) {
-  const total = jiraTicketsByDate[currentDate.toString()].reduce(
+function TotalHoursForDate(ticketsByDate, currentDate) {
+  const total = ticketsByDate[currentDate.toString()].reduce(
     (acc, curr) => curr.hours + acc,
     0
   );
@@ -103,19 +111,4 @@ function TotalJiraHoursForDate(jiraTicketsByDate, currentDate) {
     style="width: 17ch"
     >${total}h
   </span>`;
-}
-
-function ListOfTickets(jiraTicketsByDate, currentDate) {
-  return html`<ul class="list-group">
-    ${jiraTicketsByDate[currentDate.toString()].map(
-      (item) => html`<li class="list-group-item fs-6 lh-sm p-1">
-        <span title="${item.title}" class="d-inline-block" style="width: 11ch"
-          >${item.ticket}</span
-        >
-        <span class="d-inline-block text-end" style="width: 4ch"
-          >${item.hours}h</span
-        >
-      </li>`
-    )}
-  </ul>`;
 }
