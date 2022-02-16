@@ -1,5 +1,5 @@
-import { main } from "./main.js";
-import { getParams } from "./utils.js";
+import { main } from "./main.ts";
+import { getParams } from "./utils.ts";
 
 const params = await getParams("./params.json");
 

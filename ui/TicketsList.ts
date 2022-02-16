@@ -1,4 +1,4 @@
-import { html } from "../deps.js";
+import { html } from "../deps.ts";
 
 export function TicketsList(ticketsByDate, currentDate) {
   return html`<ul class="list-group">

@@ -1,7 +1,7 @@
-import { html } from "../deps.js";
-import { tenDaysAgo, today } from "../utils.js";
-import { getClockworkData } from "../jira.js";
-import { DataTable } from "./DataTable.js";
+import { html } from "../deps.ts";
+import { tenDaysAgo, today } from "../utils.ts";
+import { getClockworkData } from "../jira.ts";
+import { DataTable } from "./DataTable.ts";
 
 function App(data) {
   return html`<div class="container">${DataTable(data)}</div>`;

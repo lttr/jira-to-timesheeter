@@ -17,7 +17,7 @@ Before running locally create a file `params.json` based on `params.json.sample`
 You can perform a dry run by adding `--dry-run` flag:
 
 ```
-deno run -A --unstable local.js --dry-run
+deno run -A --unstable local.ts --dry-run
 ```
 
 ### Server

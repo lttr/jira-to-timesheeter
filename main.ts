@@ -1,7 +1,7 @@
-import { tenDaysAgo, today } from "./utils.js";
+import { tenDaysAgo, today } from "./utils.ts";
 
-import { getClockworkData } from "./jira.js";
-import { fillTimesheeter } from "./timesheeter.js";
+import { getClockworkData } from "./jira.ts";
+import { fillTimesheeter } from "./timesheeter.ts";
 
 export async function main(params, dryRun = false) {
   const paramsWithDates = {

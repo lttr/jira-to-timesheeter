@@ -1,7 +1,7 @@
-import { http } from "./deps.js";
-import { renderApp } from "./ui/App.js";
-import { main } from "./main.js";
-import { getParams } from "./utils.js";
+import { http } from "./deps.ts";
+import { renderApp } from "./ui/App.ts";
+import { main } from "./main.ts";
+import { getParams } from "./utils.ts";
 
 async function handleRequest(request) {
   if (request.method === "POST") {

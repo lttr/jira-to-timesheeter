@@ -1,4 +1,4 @@
-import { easter, Temporal } from "../deps.js";
+import { easter, Temporal } from "../deps.ts";
 
 function getBankHolidays(year) {
   // Velký pátek

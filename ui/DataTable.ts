@@ -1,4 +1,4 @@
-import { html } from "../deps.js";
+import { html } from "../deps.ts";
 import {
   dateRange,
   today,
@@ -7,8 +7,8 @@ import {
   formatCzechWeekDay,
   isHoliday,
   isWorkDay,
-} from "./holidays.js";
-import { TicketsList } from "./TicketsList.js";
+} from "./holidays.ts";
+import { TicketsList } from "./TicketsList.ts";
 
 function mapDatesToTickets(data, range) {
   const result = {};

@@ -1,4 +1,4 @@
-import { Temporal } from "./deps.js";
+import { Temporal } from "./deps.ts";
 
 export const tenDaysAgo = Temporal.Now.plainDateISO()
   .subtract({ days: 10 })
