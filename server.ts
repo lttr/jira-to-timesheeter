@@ -18,6 +18,7 @@ async function handleRequest(request: Request) {
   if (request.method === "GET") {
     const params = await getParams("./params.json");
     const html = await renderApp(params);
+    console.debug("HTML is ready to be served");
     return new Response(html, {
       headers: { "content-type": "text/html; charset=utf-8" },
     });
