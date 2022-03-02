@@ -55,8 +55,14 @@ export function isWorkDay(date: Temporal.PlainDate) {
 }
 
 export const monthAgo = Temporal.Now.plainDateISO().subtract({ months: 2 });
-
 export const tenDaysAgo = Temporal.Now.plainDateISO().subtract({ days: 10 });
+
+export const beginningOfLastMonth = Temporal.Now.plainDateISO()
+  .subtract({ months: 1 })
+  .with({ day: 1 });
+export const endOfLastMonth = Temporal.Now.plainDateISO()
+  .with({ day: 1 })
+  .subtract({ days: 1 });
 
 export const today = Temporal.Now.plainDateISO();
 

@@ -2,8 +2,8 @@ import { html, Temporal } from "../deps.ts";
 import { DatesToTicketsMap, Ticket } from "../types.ts";
 import {
   dateRange,
-  today,
-  tenDaysAgo,
+  beginningOfLastMonth,
+  endOfLastMonth,
   formatCzechDate,
   formatCzechWeekDay,
   isHoliday,
@@ -30,7 +30,7 @@ function mapDatesToTickets(data: Ticket[], range: Temporal.PlainDate[]) {
 const TARGET = 7;
 
 export function DataTable(jiraData: Ticket[], timesheeterData: Ticket[]) {
-  const rangeOfPlainDates = dateRange(tenDaysAgo, today);
+  const rangeOfPlainDates = dateRange(beginningOfLastMonth, endOfLastMonth);
   const jiraTicketsByDate = mapDatesToTickets(jiraData, rangeOfPlainDates);
   const timesheeterTicketsByDate = mapDatesToTickets(
     timesheeterData,

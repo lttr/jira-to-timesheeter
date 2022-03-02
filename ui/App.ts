@@ -1,5 +1,6 @@
 import { html } from "../deps.ts";
 import { tenDaysAgo, today } from "../utils.ts";
+import { beginningOfLastMonth, endOfLastMonth } from "./holidays.ts";
 import { getClockworkData } from "../jira.ts";
 import { DataTable } from "./DataTable.ts";
 import { InputParams, Ticket } from "../types.ts";
@@ -17,8 +18,8 @@ async function App(params: InputParams) {
 
 async function jira(params: InputParams) {
   const data = await getClockworkData({
-    startDate: tenDaysAgo,
-    endDate: today,
+    startDate: beginningOfLastMonth.toString(),
+    endDate: endOfLastMonth.toString(),
     ...params,
   });
   return data;
@@ -28,8 +29,8 @@ async function timesheeter({
   timesheeterEmail,
   timesheeterPassword,
 }: InputParams): Promise<Ticket[]> {
-  const startDate = tenDaysAgo;
-  const endDate = today;
+  const startDate = beginningOfLastMonth.toString();
+  const endDate = endOfLastMonth.toString();
   const sessionCookie = await logIntoTimesheeter(
     timesheeterEmail,
     timesheeterPassword
