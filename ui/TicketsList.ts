@@ -1,8 +1,8 @@
 import { html, Temporal } from "../deps.ts";
-import { DatesToTicketsMap } from "../types.ts";
+import { TicketsByDate } from "../types.ts";
 
 export function TicketsList(
-  ticketsByDate: DatesToTicketsMap,
+  ticketsByDate: TicketsByDate,
   currentDate: Temporal.PlainDate
 ) {
   return html`<ul class="list-group">

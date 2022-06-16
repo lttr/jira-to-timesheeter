@@ -1,5 +1,7 @@
 # Jira to Timesheeter
 
+A tool for displaying a big table with all the logged timesheet items and some stats on top of that (like how many hours one has already done this year).
+
 A tool for copying timesheets from Jira (with plugin Clockwork) to Hanaboso Timesheeter.
 
 Also a simple project for playing with Deno and [Deno Deploy](https://deno.com/deploy/).
@@ -36,5 +38,5 @@ This request can be called e.g. every day from a cron job.
 
 ## Features
 
-It fetches all records for the last 7 days from Clockwork plugin from Jira and tries to idempotently insert them into Timesheeter.
+It fetches all records for the last X days from Clockwork plugin from Jira and tries to idempotently insert them into Timesheeter.
 

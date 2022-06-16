@@ -1,7 +1,7 @@
 {
-  "clockworkToken": "abc",
-  "jiraProjectKey": "KEY",
-  "timesheeterEmail": "hello@example.com",
-  "timesheeterPassword": "12345",
-  "timesheeterProjectId": "123"
+  "clockworkToken": "abc", // only needed for fetching data from Clockwork Jira plugin
+  "jiraProjectKey": "KEY", // only needed for fetching data from Jira
+  "timesheeterEmail": "hello@example.com", // needed for login into Timesheeter
+  "timesheeterPassword": "12345", // needed for login into Timesheeter
+  "timesheeterProjectId": "123" // only needed for inserting data from Jira into Timesheeter
 }

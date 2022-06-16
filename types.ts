@@ -20,7 +20,7 @@ export interface Ticket {
   date: string;
 }
 
-export type DatesToTicketsMap = {
+export type TicketsByDate = {
   [key: string]: Ticket[];
 };
 

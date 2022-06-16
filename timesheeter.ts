@@ -1,4 +1,7 @@
 import { Cookie, ParamsWithInterval, Ticket } from "./types.ts";
+import { createCache, Cache } from "./ui/cache.ts";
+
+let cache: Cache<Ticket[]>;
 
 export async function fillTimesheeter(
   inputData: Ticket[],
@@ -15,9 +18,9 @@ export async function fillTimesheeter(
     timesheeterEmail,
     timesheeterPassword
   );
-  const existingTickets: Ticket[] = await listRecords(
-    sessionCookie,
+  const existingTickets: Ticket[] = await fetchTimesheets(
     timesheeterEmail,
+    timesheeterPassword,
     startDate,
     endDate
   );
@@ -83,7 +86,7 @@ async function postItem(
   }
 }
 
-export async function logIntoTimesheeter(
+async function logIntoTimesheeter(
   timesheeterEmail: string,
   timesheeterPassword: string
 ) {
@@ -133,28 +136,40 @@ export async function logIntoTimesheeter(
     },
   ];
  */
-export async function listRecords(
-  cookie: { name: string; value: string },
+export async function fetchTimesheets(
   timesheeterEmail: string,
+  timesheeterPassword: string,
   startDate: string,
   endDate: string
 ): Promise<Ticket[]> {
-  const response = await fetch(
-    `https://timesheeter-api.hanaboso.net/record/list?filter={%22filter%22:[[{%22column%22:%22date%22,%22operator%22:%22BETWEEN%22,%22value%22:[%22${startDate}%22,%22${endDate}%22]}]],%22sorter%22:[{%22column%22:%22date%22,%22direction%22:%22DESC%22}],%22paging%22:{%22page%22:1,%22itemsPerPage%22:1000},%22search%22:null,%22params%22:null}`,
-    {
-      method: "GET",
-      headers: {
-        Cookie: `${cookie.name}=${cookie.value}`,
-        Authorization: timesheeterEmail,
-      },
-    }
-  );
-  const data: { items: any[] } = await response.json();
-  const mappedData = data.items.map((ticket) => ({
-    ticket: ticket.ticket,
-    title: ticket.desc,
-    hours: ticket.time,
-    date: ticket.date.date.slice(0, 10),
-  }));
-  return mappedData;
+  async function getData() {
+    const cookie = await logIntoTimesheeter(
+      timesheeterEmail,
+      timesheeterPassword
+    );
+
+    const response = await fetch(
+      `https://timesheeter-api.hanaboso.net/record/list?filter={%22filter%22:[[{%22column%22:%22date%22,%22operator%22:%22BETWEEN%22,%22value%22:[%22${startDate}%22,%22${endDate}%22]}]],%22sorter%22:[{%22column%22:%22date%22,%22direction%22:%22DESC%22}],%22paging%22:{%22page%22:1,%22itemsPerPage%22:1000},%22search%22:null,%22params%22:null}`,
+      {
+        method: "GET",
+        headers: {
+          Cookie: `${cookie.name}=${cookie.value}`,
+          Authorization: timesheeterEmail,
+        },
+      }
+    );
+    const data: { items: Array<any> } = await response.json();
+    const mappedData = data.items.map((ticket) => ({
+      ticket: ticket.ticket,
+      title: ticket.desc,
+      hours: ticket.time,
+      date: ticket.date.date.slice(0, 10),
+    }));
+    return mappedData;
+  }
+
+  if (!cache) {
+    cache = createCache<Ticket[]>(getData, 1000 * 60);
+  }
+  return await cache.getData();
 }

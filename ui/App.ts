@@ -1,50 +1,47 @@
 import { html } from "../deps.ts";
-import { tenDaysAgo, today } from "../utils.ts";
-import { beginningOfLastMonth, endOfLastMonth } from "./holidays.ts";
-import { getClockworkData } from "../jira.ts";
-import { DataTable } from "./DataTable.ts";
+import { beginningOfTheYear, today } from "./holidays.ts";
+import { DataPage } from "./DataPage.ts";
 import { InputParams, Ticket } from "../types.ts";
-import { logIntoTimesheeter, listRecords } from "../timesheeter.ts";
+import { fetchTimesheets } from "../timesheeter.ts";
 
 async function App(params: InputParams) {
-  const jiraData = await jira(params);
-  // const jiraData = dummyData;
   const timesheeterData = await timesheeter(params);
-  // const timesheeterData = dummyData;
   return html`<div class="container-fluid">
-    ${DataTable(jiraData, timesheeterData)}
+    ${DataPage(timesheeterData, params)}
   </div>`;
-}
-
-async function jira(params: InputParams) {
-  const data = await getClockworkData({
-    startDate: beginningOfLastMonth.toString(),
-    endDate: endOfLastMonth.toString(),
-    ...params,
-  });
-  return data;
 }
 
 async function timesheeter({
   timesheeterEmail,
   timesheeterPassword,
 }: InputParams): Promise<Ticket[]> {
-  const startDate = beginningOfLastMonth.toString();
-  const endDate = endOfLastMonth.toString();
-  const sessionCookie = await logIntoTimesheeter(
+  const startDate = beginningOfTheYear.toString();
+  const endDate = today.toString();
+  return await fetchTimesheets(
     timesheeterEmail,
-    timesheeterPassword
-  );
-  const existingTickets: Ticket[] = await listRecords(
-    sessionCookie,
-    timesheeterEmail,
+    timesheeterPassword,
     startDate,
     endDate
   );
-  return existingTickets.map((ticket) => ({
-    ...ticket,
-    ticket: ticket.ticket.replace("ZAS-WEB-", ""),
-  }));
+}
+
+export async function renderApp(params: InputParams) {
+  const output = html`<!DOCTYPE html>
+    <html>
+      <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link
+          href="https://cdn.skypack.dev/bootstrap@5/dist/css/bootstrap.min.css"
+          rel="stylesheet"
+          crossorigin="anonymous"
+        />
+      </head>
+      <body>
+        ${await App(params)}
+      </body>
+    </html>`;
+  return output;
 }
 
 const dummyData = [
@@ -113,22 +110,3 @@ const dummyData = [
     date: "2022-02-14",
   },
 ];
-
-export async function renderApp(params: InputParams) {
-  const output = html`<!DOCTYPE html>
-    <html>
-      <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <link
-          href="https://cdn.skypack.dev/bootstrap@5/dist/css/bootstrap.min.css"
-          rel="stylesheet"
-          crossorigin="anonymous"
-        />
-      </head>
-      <body>
-        ${App(params)}
-      </body>
-    </html>`;
-  return output;
-}

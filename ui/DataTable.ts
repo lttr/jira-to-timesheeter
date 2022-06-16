@@ -1,9 +1,7 @@
 import { html, Temporal } from "../deps.ts";
-import { DatesToTicketsMap, Ticket } from "../types.ts";
+import { TicketsByDate, Ticket } from "../types.ts";
 import {
-  dateRange,
-  beginningOfLastMonth,
-  endOfLastMonth,
+  DateRange,
   formatCzechDate,
   formatCzechWeekDay,
   isHoliday,
@@ -11,87 +9,41 @@ import {
 } from "./holidays.ts";
 import { TicketsList } from "./TicketsList.ts";
 
-function mapDatesToTickets(data: Ticket[], range: Temporal.PlainDate[]) {
-  const result: DatesToTicketsMap = {};
-  for (const date of range) {
-    result[date.toString()] = [];
-  }
-  for (const item of data) {
-    result[item.date]?.push(item);
-  }
-  for (const date of range) {
-    result[date.toString()].sort((a, b) =>
-      new Intl.Collator([], { numeric: true }).compare(a.ticket, b.ticket)
-    );
-  }
-  return result;
-}
-
 const TARGET = 7;
 
-export function DataTable(jiraData: Ticket[], timesheeterData: Ticket[]) {
-  const rangeOfPlainDates = dateRange(beginningOfLastMonth, endOfLastMonth);
-  const jiraTicketsByDate = mapDatesToTickets(jiraData, rangeOfPlainDates);
-  const timesheeterTicketsByDate = mapDatesToTickets(
-    timesheeterData,
-    rangeOfPlainDates
-  );
+export function DataTable(
+  ticketsByDate: TicketsByDate,
+  rangeOfPlainDates: DateRange
+) {
   const holidayClass = "bg-secondary bg-opacity-10";
   return html`
     <div class="table-responsive" id="table-wrapper">
       <table class="table">
         <thead>
           <tr>
-            <th scope="col"></th>
-            ${rangeOfPlainDates.map(
-              (currentDate) =>
-                html`<th
-                  scope="col"
-                  class=${isHoliday(currentDate) && holidayClass}
-                >
-                  <div>${formatCzechWeekDay(currentDate)}</div>
-                  <div>${formatCzechDate(currentDate)}</div>
-                </th>`
-            )}
+            <th>datum</th>
+            <th>záznamy</th>
+            <th>hodiny</th>
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <th scope="row">Jira</th>
             ${rangeOfPlainDates.map(
               (currentDate) =>
-                html`<td class=${isHoliday(currentDate) && holidayClass}>
-                  ${TicketsList(jiraTicketsByDate, currentDate)}
-                </td>`
-            )}
-          </tr>
-          <tr>
-            <th scope="row">Jira total</th>
-            ${rangeOfPlainDates.map(
-              (currentDate) => html`<td
-                class=${isHoliday(currentDate) && holidayClass}
-              >
-                ${TotalHoursForDate(jiraTicketsByDate, currentDate)}
-              </td>`
-            )}
-          </tr>
-          <tr>
-            <th scope="row">Timesheeter</th>
-            ${rangeOfPlainDates.map(
-              (currentDate) =>
-                html`<td class=${isHoliday(currentDate) && holidayClass}>
-                  ${TicketsList(timesheeterTicketsByDate, currentDate)}
-                </td>`
-            )}
-          </tr>
-          <tr>
-            <th scope="row">Timesheeter total</th>
-            ${rangeOfPlainDates.map(
-              (currentDate) => html`<td
-                class=${isHoliday(currentDate) && holidayClass}
-              >
-                ${TotalHoursForDate(timesheeterTicketsByDate, currentDate)}
-              </td>`
+                html`
+                  <tr>
+                    <th class=${isHoliday(currentDate) && holidayClass}>
+                      <div>${formatCzechWeekDay(currentDate)}</div>
+                      <div>${formatCzechDate(currentDate)}</div>
+                    </th>
+
+                    <td class=${isHoliday(currentDate) && holidayClass}>
+                      ${TicketsList(ticketsByDate, currentDate)}
+                    </td>
+                    <td class=${isHoliday(currentDate) && holidayClass}>
+                      ${TotalHoursForDate(ticketsByDate, currentDate)}
+                    </td>
+                  </tr>
+                `
             )}
           </tr>
         </tbody>
@@ -128,11 +80,11 @@ export function DataTable(jiraData: Ticket[], timesheeterData: Ticket[]) {
 }
 
 function TotalHoursForDate(
-  ticketsByDate: DatesToTicketsMap,
+  ticketsByDate: TicketsByDate,
   currentDate: Temporal.PlainDate
 ) {
   const total = ticketsByDate[currentDate.toString()].reduce(
-    (acc, curr) => curr.hours + acc,
+    (acc: number, curr: Ticket) => curr.hours + acc,
     0
   );
   return html`<span

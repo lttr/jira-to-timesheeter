@@ -28,7 +28,12 @@ function getBankHolidays(year: number) {
   ];
 }
 
-export function dateRange(from: Temporal.PlainDate, to: Temporal.PlainDate) {
+export type DateRange = Array<Temporal.PlainDate>;
+
+export function dateRange(
+  from: Temporal.PlainDate,
+  to: Temporal.PlainDate
+): DateRange {
   let current = Temporal.PlainDate.from(from);
   const range = [current];
   while (!current.equals(to)) {
@@ -64,6 +69,11 @@ export const endOfLastMonth = Temporal.Now.plainDateISO()
   .with({ day: 1 })
   .subtract({ days: 1 });
 
+export const beginningOfTheYear = Temporal.Now.plainDateISO().with({
+  day: 1,
+  month: 1,
+});
+
 export const today = Temporal.Now.plainDateISO();
 
 export function formatCzechDate(date: Temporal.PlainDate) {
@@ -78,4 +88,28 @@ export function formatCzechWeekDay(date: Temporal.PlainDate) {
   return Intl.DateTimeFormat("cs", options).format(
     new Date(date.year, date.month - 1, date.day)
   );
+}
+
+export function listOfMonths(): string[] {
+  return Array.from(Array(12), (_, i) =>
+    new Date(0, i).toLocaleDateString("cs", { month: "long" })
+  );
+}
+
+export function workingDaysInEveryMonth(): Map<number, number> {
+  const map: Map<number, number> = new Map();
+  const startOfTheYear = Temporal.Now.plainDateISO().with({ month: 1, day: 1 });
+  let date = startOfTheYear.add({ days: 1 });
+  while (date.year === startOfTheYear.year) {
+    if (isWorkDay(date)) {
+      const currentValue = map.get(date.month);
+      if (currentValue != null) {
+        map.set(date.month, currentValue + 1);
+      } else {
+        map.set(date.month, 0);
+      }
+    }
+    date = date.add({ days: 1 });
+  }
+  return map;
 }
