@@ -21,7 +21,7 @@ async function timesheeter({
     timesheeterEmail,
     timesheeterPassword,
     startDate,
-    endDate,
+    endDate
   );
 }
 
@@ -43,70 +43,3 @@ export async function renderApp(params: InputParams) {
     </html>`;
   return output;
 }
-
-const dummyData = [
-  {
-    ticket: "PACWEB-3",
-    title: "Standups, meetings, plannigns, project card ...",
-    hours: 3.5,
-    date: "2022-02-06",
-  },
-  {
-    ticket: "PACWEB-573",
-    title: "Write down the exact procedure for the future",
-    hours: 0.5,
-    date: "2022-02-07",
-  },
-  {
-    ticket: "PACWEB-556",
-    title: "Create new Playground website",
-    hours: 0.5,
-    date: "2022-02-08",
-  },
-  {
-    ticket: "PACWEB-559",
-    title:
-      "Connect blog components and blog articles to Storyblok and publishing process",
-    hours: 5,
-    date: "2022-02-09",
-  },
-  {
-    ticket: "PACWEB-3",
-    title: "Standups, meetings, plannigns, project card ...",
-    hours: 2,
-    date: "2022-02-10",
-  },
-  {
-    ticket: "PACWEB-3",
-    title: "Standups, meetings, plannigns, project card ...",
-    hours: 3,
-    date: "2022-02-11",
-  },
-  {
-    ticket: "PACWEB-557",
-    title:
-      "Create structure in Storyblok that would enable to publish articles on Playground website",
-    hours: 2,
-    date: "2022-02-12",
-  },
-  {
-    ticket: "PACWEB-558",
-    title:
-      "Implement a couple of blog specific components in codebase and in SB",
-    hours: 2,
-    date: "2022-02-13",
-  },
-  {
-    ticket: "PACWEB-558",
-    title:
-      "Implement a couple of blog specific components in codebase and in SB",
-    hours: 4.5,
-    date: "2022-02-14",
-  },
-  {
-    ticket: "PACWEB-3",
-    title: "Standups, meetings, plannigns, project card ...",
-    hours: 2,
-    date: "2022-02-14",
-  },
-];
