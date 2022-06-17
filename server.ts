@@ -46,7 +46,7 @@ async function handleRequest(request: Request) {
             headers: {
               "WWW-Authenticate": "Basic",
             },
-          },
+          }
         );
       }
       console.debug("HTML is ready to be served");
@@ -66,4 +66,8 @@ async function handleRequest(request: Request) {
 }
 
 console.log("Listening on http://localhost:8080");
-await http.listenAndServe(":8080", handleRequest);
+try {
+  await http.listenAndServe(":8080", handleRequest);
+} catch (e) {
+  console.error(e);
+}
