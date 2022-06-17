@@ -34,7 +34,7 @@ export async function getClockworkData({
   const data = await response.json();
   if (Array.isArray(data)) {
     console.info(
-      `Clockwork data has been successfully downloaded, found ${data.length} entries.`
+      `Clockwork data has been successfully downloaded, found ${data.length} entries.`,
     );
   }
   return data.map(({ timeSpentSeconds, issue, started }: ClockworkResponse) => {

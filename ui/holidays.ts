@@ -32,7 +32,7 @@ export type DateRange = Array<Temporal.PlainDate>;
 
 export function dateRange(
   from: Temporal.PlainDate,
-  to: Temporal.PlainDate
+  to: Temporal.PlainDate,
 ): DateRange {
   let current = Temporal.PlainDate.from(from);
   const range = [current];
@@ -79,20 +79,21 @@ export const today = Temporal.Now.plainDateISO();
 export function formatCzechDate(date: Temporal.PlainDate) {
   const options = { month: "numeric", day: "numeric" } as const;
   return Intl.DateTimeFormat("cs", options).format(
-    new Date(date.year, date.month - 1, date.day)
+    new Date(date.year, date.month - 1, date.day),
   );
 }
 
 export function formatCzechWeekDay(date: Temporal.PlainDate) {
   const options = { weekday: "long" } as const;
   return Intl.DateTimeFormat("cs", options).format(
-    new Date(date.year, date.month - 1, date.day)
+    new Date(date.year, date.month - 1, date.day),
   );
 }
 
 export function listOfMonths(): string[] {
-  return Array.from(Array(12), (_, i) =>
-    new Date(0, i).toLocaleDateString("cs", { month: "long" })
+  return Array.from(
+    Array(12),
+    (_, i) => new Date(0, i).toLocaleDateString("cs", { month: "long" }),
   );
 }
 

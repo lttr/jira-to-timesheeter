@@ -46,7 +46,7 @@ async function handleRequest(request: Request) {
             headers: {
               "WWW-Authenticate": "Basic",
             },
-          }
+          },
         );
       }
       console.debug("HTML is ready to be served");

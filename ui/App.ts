@@ -21,7 +21,7 @@ async function timesheeter({
     timesheeterEmail,
     timesheeterPassword,
     startDate,
-    endDate
+    endDate,
   );
 }
 

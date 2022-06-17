@@ -26,7 +26,7 @@ function logParameters({
   endDate,
 }: ParamsWithInterval) {
   console.info(
-    `Params are { timesheeterEmail: ${timesheeterEmail}, jiraProjectKey: ${jiraProjectKey}, timesheeterProjectId: ${timesheeterProjectId} }`
+    `Params are { timesheeterEmail: ${timesheeterEmail}, jiraProjectKey: ${jiraProjectKey}, timesheeterProjectId: ${timesheeterProjectId} }`,
   );
   console.info(`Processing dates between ${startDate} and ${endDate}`);
 }

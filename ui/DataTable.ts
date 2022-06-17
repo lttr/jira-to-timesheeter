@@ -1,5 +1,5 @@
 import { html, Temporal } from "../deps.ts";
-import { TicketsByDate, Ticket } from "../types.ts";
+import { Ticket, TicketsByDate } from "../types.ts";
 import {
   DateRange,
   formatCzechDate,
@@ -13,7 +13,7 @@ const TARGET = 7;
 
 export function DataTable(
   ticketsByDate: TicketsByDate,
-  rangeOfPlainDates: DateRange
+  rangeOfPlainDates: DateRange,
 ) {
   const holidayClass = "bg-secondary bg-opacity-10";
   return html`
@@ -27,9 +27,10 @@ export function DataTable(
           </tr>
         </thead>
         <tbody>
-            ${rangeOfPlainDates.map(
-              (currentDate) =>
-                html`
+            ${
+    rangeOfPlainDates.map(
+      (currentDate) =>
+        html`
                   <tr>
                     <th class=${isHoliday(currentDate) && holidayClass}>
                       <div>${formatCzechWeekDay(currentDate)}</div>
@@ -43,8 +44,9 @@ export function DataTable(
                       ${TotalHoursForDate(ticketsByDate, currentDate)}
                     </td>
                   </tr>
-                `
-            )}
+                `,
+    )
+  }
           </tr>
         </tbody>
       </table>
@@ -81,11 +83,11 @@ export function DataTable(
 
 function TotalHoursForDate(
   ticketsByDate: TicketsByDate,
-  currentDate: Temporal.PlainDate
+  currentDate: Temporal.PlainDate,
 ) {
   const total = ticketsByDate[currentDate.toString()].reduce(
     (acc: number, curr: Ticket) => curr.hours + acc,
-    0
+    0,
   );
   return html`<span
     class=${`d-inline-block text-end p-1

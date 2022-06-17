@@ -1,7 +1,7 @@
 import { html, Temporal } from "../deps.ts";
 import { DataTable } from "./DataTable.ts";
-import { TicketsByDate, Ticket, InputParams } from "../types.ts";
-import { dateRange, beginningOfTheYear, today } from "./holidays.ts";
+import { InputParams, Ticket, TicketsByDate } from "../types.ts";
+import { beginningOfTheYear, dateRange, today } from "./holidays.ts";
 import { Stats } from "./Stats.ts";
 
 function mapDatesToTickets(data: Ticket[], range: Temporal.PlainDate[]) {

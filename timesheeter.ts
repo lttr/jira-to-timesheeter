@@ -1,5 +1,5 @@
 import { Cookie, ParamsWithInterval, Ticket } from "./types.ts";
-import { createCache, Cache } from "./ui/cache.ts";
+import { Cache, createCache } from "./ui/cache.ts";
 
 let cache: Cache<Ticket[]>;
 
@@ -12,27 +12,26 @@ export async function fillTimesheeter(
     startDate,
     endDate,
   }: ParamsWithInterval,
-  dryRun: boolean
+  dryRun: boolean,
 ): Promise<void> {
   const sessionCookie = await logIntoTimesheeter(
     timesheeterEmail,
-    timesheeterPassword
+    timesheeterPassword,
   );
   const existingTickets: Ticket[] = await fetchTimesheets(
     timesheeterEmail,
     timesheeterPassword,
     startDate,
-    endDate
+    endDate,
   );
   const toBeInserted = inputData.filter((inputTicket) => {
     return !existingTickets.find((existingTicket) => {
-      const condition =
-        existingTicket.ticket.endsWith(inputTicket.ticket) &&
+      const condition = existingTicket.ticket.endsWith(inputTicket.ticket) &&
         existingTicket.date.startsWith(inputTicket.date) &&
         inputTicket.hours === existingTicket.hours;
       if (condition) {
         console.warn(
-          `An entry for ${inputTicket.date} ticket ${inputTicket.ticket} duration ${inputTicket.hours} hours is already in Timesheeter.`
+          `An entry for ${inputTicket.date} ticket ${inputTicket.ticket} duration ${inputTicket.hours} hours is already in Timesheeter.`,
         );
       }
       return condition;
@@ -42,7 +41,7 @@ export async function fillTimesheeter(
   for (const item of toBeInserted) {
     if (dryRun) {
       console.log(
-        `DRY RUN: An entry would be inserted into timesheeter { date: ${item.date}, ticket: ${item.ticket}, hours: ${item.hours} }`
+        `DRY RUN: An entry would be inserted into timesheeter { date: ${item.date}, ticket: ${item.ticket}, hours: ${item.hours} }`,
       );
       continue;
     }
@@ -54,7 +53,7 @@ async function postItem(
   ticket: Ticket,
   timesheeterProjectId: string,
   cookie: Cookie,
-  timesheeterEmail: string
+  timesheeterEmail: string,
 ) {
   const payload = {
     homeOffice: true,
@@ -76,19 +75,19 @@ async function postItem(
         Cookie: `${cookie.name}=${cookie.value}`,
         Authorization: timesheeterEmail,
       },
-    }
+    },
   );
   const result = response.status;
   if (result === 201) {
     console.info(
-      `An entry for ${ticket.date} ticket ${ticket.ticket} duration ${ticket.hours} hours was inserted into Timesheeter.`
+      `An entry for ${ticket.date} ticket ${ticket.ticket} duration ${ticket.hours} hours was inserted into Timesheeter.`,
     );
   }
 }
 
 async function logIntoTimesheeter(
   timesheeterEmail: string,
-  timesheeterPassword: string
+  timesheeterPassword: string,
 ) {
   const response = await fetch("https://timesheeter-api.hanaboso.net/login", {
     headers: {
@@ -140,12 +139,12 @@ export async function fetchTimesheets(
   timesheeterEmail: string,
   timesheeterPassword: string,
   startDate: string,
-  endDate: string
+  endDate: string,
 ): Promise<Ticket[]> {
   async function getData() {
     const cookie = await logIntoTimesheeter(
       timesheeterEmail,
-      timesheeterPassword
+      timesheeterPassword,
     );
 
     const response = await fetch(
@@ -156,7 +155,7 @@ export async function fetchTimesheets(
           Cookie: `${cookie.name}=${cookie.value}`,
           Authorization: timesheeterEmail,
         },
-      }
+      },
     );
     const data: { items: Array<any> } = await response.json();
     const mappedData = data.items.map((ticket) => ({
