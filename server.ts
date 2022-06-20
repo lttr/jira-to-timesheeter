@@ -53,6 +53,15 @@ async function handleRequest(request: Request) {
       const auth = request.headers.get("Authorization")?.split(" ")[1] ?? "";
       const [timesheeterEmail, timesheeterPassword] = atob(auth).split(":");
 
+      if (!timesheeterEmail || !timesheeterPassword) {
+        return new Response(`Please enter login and password`, {
+          status: 404,
+          headers: {
+            "WWW-Authenticate": "Basic",
+          },
+        });
+      }
+
       let html = "";
       try {
         html = await renderApp({ timesheeterEmail, timesheeterPassword });

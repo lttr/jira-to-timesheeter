@@ -152,35 +152,48 @@ export async function fetchTimesheets(
   endDate: string
 ): Promise<Ticket[]> {
   console.debug(`Fetching timesheeter data for user '${timesheeterEmail}'`);
-  async function getData() {
-    const cookie = await logIntoTimesheeter(
-      timesheeterEmail,
-      timesheeterPassword
-    );
-
-    const response = await fetch(
-      `https://timesheeter-api.hanaboso.net/record/list?filter={%22filter%22:[[{%22column%22:%22date%22,%22operator%22:%22BETWEEN%22,%22value%22:[%22${startDate}%22,%22${endDate}%22]}]],%22sorter%22:[{%22column%22:%22date%22,%22direction%22:%22DESC%22}],%22paging%22:{%22page%22:1,%22itemsPerPage%22:1000},%22search%22:null,%22params%22:null}`,
-      {
-        method: "GET",
-        headers: {
-          Cookie: `${cookie.name}=${cookie.value}`,
-          Authorization: timesheeterEmail,
-        },
-      }
-    );
-    const data: { items: Array<TimesheeterTicket> } = await response.json();
-    const mappedData = data.items.map((ticket) => ({
-      ticket: ticket.ticket,
-      title: ticket.desc,
-      hours: ticket.time,
-      date: ticket.date.date.slice(0, 10),
-    }));
-    return mappedData;
-  }
-
   if (!cache) {
     console.debug("Cache does not exists, creating one");
-    cache = createCache<Ticket[]>(getData, 1000 * 60);
+    cache = createCache<Ticket[]>(
+      () =>
+        performTimesheeterFetch(
+          timesheeterEmail,
+          timesheeterPassword,
+          startDate,
+          endDate
+        ),
+      1000 * 60
+    );
   }
-  return (await cache.getData()) ?? [];
+  return (
+    (await cache.getData([timesheeterEmail, startDate, endDate].join(""))) ?? []
+  );
+}
+
+async function performTimesheeterFetch(
+  email: string,
+  password: string,
+  startDate: string,
+  endDate: string
+): Promise<Ticket[]> {
+  const cookie = await logIntoTimesheeter(email, password);
+
+  const response = await fetch(
+    `https://timesheeter-api.hanaboso.net/record/list?filter={%22filter%22:[[{%22column%22:%22date%22,%22operator%22:%22BETWEEN%22,%22value%22:[%22${startDate}%22,%22${endDate}%22]}]],%22sorter%22:[{%22column%22:%22date%22,%22direction%22:%22DESC%22}],%22paging%22:{%22page%22:1,%22itemsPerPage%22:1000},%22search%22:null,%22params%22:null}`,
+    {
+      method: "GET",
+      headers: {
+        Cookie: `${cookie.name}=${cookie.value}`,
+        Authorization: email,
+      },
+    }
+  );
+  const data: { items: Array<TimesheeterTicket> } = await response.json();
+  const mappedData = data.items.map((ticket) => ({
+    ticket: ticket.ticket,
+    title: ticket.desc,
+    hours: ticket.time,
+    date: ticket.date.date.slice(0, 10),
+  }));
+  return mappedData;
 }

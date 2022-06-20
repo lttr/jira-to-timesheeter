@@ -1,23 +1,23 @@
 export type Cache<T> = {
-  getData: () => Promise<T | null>;
+  getData: (key: string) => Promise<T | null>;
 };
 
 export function createCache<T>(
   fetchFunction: () => Promise<T>,
   ttl: number
 ): Cache<T> {
-  let cache: T | null = null;
+  const cache: Record<string, T | null> = {};
   let fetchDate = new Date();
 
   const isCacheExpired = () => fetchDate.getTime() + ttl < new Date().getTime();
 
   return {
-    async getData() {
-      if (!cache || isCacheExpired()) {
+    async getData(key: string) {
+      if (!cache[key] || isCacheExpired()) {
         let data = null;
         try {
           data = await fetchFunction();
-          cache = data;
+          cache[key] = data;
           fetchDate = new Date();
         } catch (e) {
           console.warn(e);
@@ -25,7 +25,7 @@ export function createCache<T>(
         return data;
       } else {
         console.debug("Cache hit");
-        return cache;
+        return cache[key];
       }
     },
   };
