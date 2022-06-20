@@ -84,9 +84,8 @@ async function handleRequest(request: Request) {
   });
 }
 
-console.debug("Listening on http://localhost:3200");
 try {
-  await http.listenAndServe(":3200", handleRequest);
+  await http.serve(handleRequest, { port: 3200 });
 } catch (e) {
   console.error(e);
 }
