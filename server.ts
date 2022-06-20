@@ -53,7 +53,6 @@ async function handleRequest(request: Request) {
       const auth = request.headers.get("Authorization")?.split(" ")[1] ?? "";
       const [timesheeterEmail, timesheeterPassword] = atob(auth).split(":");
 
-      console.warn(timesheeterEmail, timesheeterPassword);
       let html = "";
       try {
         html = await renderApp({ timesheeterEmail, timesheeterPassword });

@@ -151,6 +151,7 @@ export async function fetchTimesheets(
   startDate: string,
   endDate: string
 ): Promise<Ticket[]> {
+  console.debug(`Fetching timesheeter data for user '${timesheeterEmail}'`);
   async function getData() {
     const cookie = await logIntoTimesheeter(
       timesheeterEmail,
