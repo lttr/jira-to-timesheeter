@@ -19,7 +19,7 @@ export function createCache<T>(
         fetchDate = new Date();
         return data;
       } else {
-        console.debug("Cache hit.");
+        console.debug("Cache hit");
         return cache;
       }
     },

@@ -103,7 +103,7 @@ async function logIntoTimesheeter(
   if (response.status !== 200) {
     throw new Error("Login to Timesheeter was not successful.");
   }
-  console.debug("Login to Timesheeter was successful.");
+  console.debug("Login to Timesheeter was successful");
   const cookies: string | null = response.headers.get("set-cookie");
   if (cookies) {
     const [name, value] = cookies.split(";")[0].split("=");
@@ -178,7 +178,7 @@ export async function fetchTimesheets(
   }
 
   if (!cache) {
-    console.debug("Cache does not exists, creating one.");
+    console.debug("Cache does not exists, creating one");
     cache = createCache<Ticket[]>(getData, 1000 * 60);
   }
   return await cache.getData();

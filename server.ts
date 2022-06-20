@@ -26,12 +26,12 @@ async function handleRequest(request: Request) {
     } catch (_) {
       // No params in a file, needs to be authorized
       console.debug(
-        "File 'params.json' is not present, authorization will be used."
+        "File 'params.json' is not present, authorization will be used"
       );
     }
 
     if (params.timesheeterEmail && params.timesheeterPassword) {
-      console.debug("local dev");
+      console.debug("Local dev");
       const html = await renderApp(params);
       return new Response(html, {
         headers: {
@@ -41,7 +41,7 @@ async function handleRequest(request: Request) {
     }
 
     if (!request.headers.has("Authorization")) {
-      console.debug("prod not authorized");
+      console.debug("Prod not authorized");
       return new Response(null, {
         status: 401,
         headers: {
@@ -49,10 +49,11 @@ async function handleRequest(request: Request) {
         },
       });
     } else {
-      console.debug("prod is authorized");
+      console.debug("Prod has authorization header");
       const auth = request.headers.get("Authorization")?.split(" ")[1] ?? "";
       const [timesheeterEmail, timesheeterPassword] = atob(auth).split(":");
 
+      console.warn(timesheeterEmail, timesheeterPassword);
       let html = "";
       try {
         html = await renderApp({ timesheeterEmail, timesheeterPassword });
