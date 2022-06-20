@@ -55,7 +55,7 @@ async function handleRequest(request: Request) {
 
       if (!timesheeterEmail || !timesheeterPassword) {
         return new Response(`Please enter login and password`, {
-          status: 404,
+          status: 401,
           headers: {
             "WWW-Authenticate": "Basic",
           },
