@@ -182,5 +182,5 @@ export async function fetchTimesheets(
     console.debug("Cache does not exists, creating one");
     cache = createCache<Ticket[]>(getData, 1000 * 60);
   }
-  return await cache.getData();
+  return (await cache.getData()) ?? [];
 }

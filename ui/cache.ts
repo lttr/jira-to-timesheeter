@@ -1,5 +1,5 @@
 export type Cache<T> = {
-  getData: () => Promise<T>;
+  getData: () => Promise<T | null>;
 };
 
 export function createCache<T>(
@@ -14,9 +14,14 @@ export function createCache<T>(
   return {
     async getData() {
       if (!cache || isCacheExpired()) {
-        const data = await fetchFunction();
-        cache = data;
-        fetchDate = new Date();
+        let data = null;
+        try {
+          data = await fetchFunction();
+          cache = data;
+          fetchDate = new Date();
+        } catch (e) {
+          console.warn(e);
+        }
         return data;
       } else {
         console.debug("Cache hit");
