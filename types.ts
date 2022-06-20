@@ -1,10 +1,13 @@
-export interface InputParams {
-  clockworkToken: string;
-  jiraProjectKey: string;
+export interface TimesheeterParams {
   timesheeterEmail: string;
   timesheeterPassword: string;
-  timesheeterProjectId: string;
 }
+
+export type InputParams = TimesheeterParams & {
+  clockworkToken: string;
+  jiraProjectKey: string;
+  timesheeterProjectId: string;
+};
 
 export interface Interval {
   endDate: string;

@@ -1,10 +1,10 @@
 import { html } from "../deps.ts";
 import { beginningOfTheYear, today } from "./holidays.ts";
 import { DataPage } from "./DataPage.ts";
-import { InputParams, Ticket } from "../types.ts";
+import { Ticket, TimesheeterParams } from "../types.ts";
 import { fetchTimesheets } from "../timesheeter.ts";
 
-async function App(params: InputParams) {
+async function App(params: TimesheeterParams) {
   const timesheeterData = await timesheeter(params);
   return html`<div class="container-fluid">
     ${DataPage(timesheeterData, params)}
@@ -14,7 +14,7 @@ async function App(params: InputParams) {
 async function timesheeter({
   timesheeterEmail,
   timesheeterPassword,
-}: InputParams): Promise<Ticket[]> {
+}: TimesheeterParams): Promise<Ticket[]> {
   const startDate = beginningOfTheYear.toString();
   const endDate = today.toString();
   return await fetchTimesheets(
@@ -25,7 +25,7 @@ async function timesheeter({
   );
 }
 
-export async function renderApp(params: InputParams) {
+export async function renderApp(params: TimesheeterParams) {
   const output = html`<!DOCTYPE html>
     <html>
       <head>

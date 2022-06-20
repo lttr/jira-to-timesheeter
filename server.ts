@@ -2,7 +2,7 @@ import { http } from "./deps.ts";
 import { renderApp } from "./ui/App.ts";
 import { main } from "./main.ts";
 import { getParams } from "./utils.ts";
-import { InputParams } from "./types.ts";
+import { InputParams, TimesheeterParams } from "./types.ts";
 
 async function handleRequest(request: Request) {
   if (request.method === "POST") {
@@ -17,7 +17,28 @@ async function handleRequest(request: Request) {
   }
 
   if (request.method === "GET") {
+    let params: TimesheeterParams = {
+      timesheeterEmail: "",
+      timesheeterPassword: "",
+    };
+    try {
+      params = await getParams("./params.json");
+    } catch (_) {
+      // No params in a file, needs to be authorized
+    }
+
+    if (params.timesheeterEmail && params.timesheeterPassword) {
+      console.debug("local dev");
+      const html = await renderApp(params);
+      return new Response(html, {
+        headers: {
+          "content-type": "text/html; charset=utf-8",
+        },
+      });
+    }
+
     if (!request.headers.has("Authorization")) {
+      console.debug("prod not authorized");
       return new Response(null, {
         status: 401,
         headers: {
@@ -25,22 +46,17 @@ async function handleRequest(request: Request) {
         },
       });
     } else {
+      console.debug("prod is authorized");
       const auth = request.headers.get("Authorization")?.split(" ")[1] ?? "";
-      const [login, password] = atob(auth).split(":");
+      const [timesheeterEmail, timesheeterPassword] = atob(auth).split(":");
 
-      const params = await getParams("./params.json");
-      const mergedParams: InputParams = {
-        ...params,
-        timesheeterEmail: login,
-        timesheeterPassword: password,
-      };
       let html = "";
       try {
-        html = await renderApp(mergedParams);
+        html = await renderApp({ timesheeterEmail, timesheeterPassword });
       } catch (error) {
         console.error(error);
         return new Response(
-          `Your credentials does not work for Timesheeter (login: ${login})`,
+          `Your credentials does not work for Timesheeter (login: ${timesheeterEmail})`,
           {
             status: 401,
             headers: {
@@ -65,9 +81,9 @@ async function handleRequest(request: Request) {
   });
 }
 
-console.log("Listening on http://localhost:8080");
+console.debug("Listening on http://localhost:3200");
 try {
-  await http.listenAndServe(":8080", handleRequest);
+  await http.listenAndServe(":3200", handleRequest);
 } catch (e) {
   console.error(e);
 }

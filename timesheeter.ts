@@ -41,7 +41,7 @@ export async function fillTimesheeter(
 
   for (const item of toBeInserted) {
     if (dryRun) {
-      console.log(
+      console.info(
         `DRY RUN: An entry would be inserted into timesheeter { date: ${item.date}, ticket: ${item.ticket}, hours: ${item.hours} }`
       );
       continue;
@@ -103,7 +103,7 @@ async function logIntoTimesheeter(
   if (response.status !== 200) {
     throw new Error("Login to Timesheeter was not successful.");
   }
-  console.log("Login to Timesheeter was successful.");
+  console.debug("Login to Timesheeter was successful.");
   const cookies: string | null = response.headers.get("set-cookie");
   if (cookies) {
     const [name, value] = cookies.split(";")[0].split("=");
