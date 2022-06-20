@@ -165,9 +165,9 @@ export async function fetchTimesheets(
       1000 * 60
     );
   }
-  return (
-    (await cache.getData([timesheeterEmail, startDate, endDate].join(""))) ?? []
-  );
+  const key = [timesheeterEmail, startDate, endDate].join("|");
+  const data = await cache.getData(key);
+  return data ?? [];
 }
 
 async function performTimesheeterFetch(
