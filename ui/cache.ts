@@ -21,7 +21,7 @@ export function createCache<T>(
             date: new Date(),
           };
         } catch (e) {
-          console.warn(e);
+          throw e;
         }
         return data;
       } else {
