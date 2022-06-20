@@ -2,7 +2,7 @@ import { http } from "./deps.ts";
 import { renderApp } from "./ui/App.ts";
 import { main } from "./main.ts";
 import { getParams } from "./utils.ts";
-import { InputParams, TimesheeterParams } from "./types.ts";
+import { TimesheeterParams } from "./types.ts";
 
 async function handleRequest(request: Request) {
   if (request.method === "POST") {
@@ -25,6 +25,9 @@ async function handleRequest(request: Request) {
       params = await getParams("./params.json");
     } catch (_) {
       // No params in a file, needs to be authorized
+      console.debug(
+        "File 'params.json' is not present, authorization will be used."
+      );
     }
 
     if (params.timesheeterEmail && params.timesheeterPassword) {

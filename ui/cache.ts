@@ -4,7 +4,7 @@ export type Cache<T> = {
 
 export function createCache<T>(
   fetchFunction: () => Promise<T>,
-  ttl: number,
+  ttl: number
 ): Cache<T> {
   let cache: T | null = null;
   let fetchDate = new Date();
@@ -19,6 +19,7 @@ export function createCache<T>(
         fetchDate = new Date();
         return data;
       } else {
+        console.debug("Cache hit.");
         return cache;
       }
     },
