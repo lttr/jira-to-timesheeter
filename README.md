@@ -1,13 +1,22 @@
 # Jira to Timesheeter
 
-A tool for displaying a big table with all the logged timesheet items and some
-stats on top of that (like how many hours one has already done this year).
+A tool that helps me manage my time tracking records.
 
-A tool for copying timesheets from Jira (with plugin Clockwork) to Hanaboso
+It is specific to tools that are used at [Hanaboso](https://hanaboso.com/) however there is some interesting logic that can be used elsewhere (like an algorithm for counting working hours in any given year).
+
+## Features
+
+* Renders a big table with all the tracking records and some
+stats on top of that (like how many hours one has already done this year).
+* A tool for copying timesheets from Jira (with plugin Clockwork) to Hanaboso
 Timesheeter.
 
-Also a simple project for playing with Deno and
-[Deno Deploy](https://deno.com/deploy/).
+## Tech
+
+* Simple [http](https://doc.deno.land/https://deno.land/std@0.144.0/http/mod.ts/~/serve) server on [Deno](https://deno.land).
+* [uhtml-ssr](https://github.com/WebReflection/uhtml-ssr) library for templating based on tagged tamplate literals
+* [Temporal](https://tc39.es/proposal-temporal/docs/) polyfill for playing with dates
+* Running on [Deno Deploy](https://deno.com/deploy/).
 
 ## Requirements
 
@@ -41,7 +50,5 @@ Its main route expects a POST request with the same object that is in
 
 This request can be called e.g. every day from a cron job.
 
-## Features
+Its main route expects a GET request which will return a page full of data from Timesheeter. Expects credentials from HTTP Basic auth.
 
-It fetches all records for the last X days from Clockwork plugin from Jira and
-tries to idempotently insert them into Timesheeter.

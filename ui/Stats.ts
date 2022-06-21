@@ -75,7 +75,7 @@ export function Stats(ticketsByDate: TicketsByDate) {
       hours8: acc.hours8 + curr.hours8,
       hours7: acc.hours7 + curr.hours7,
     }),
-    { hoursWorked: 0, hours8: 0, hours7: 0 },
+    { hoursWorked: 0, hours8: 0, hours7: 0 }
   );
   return html`
     <table class="table table-hover">
@@ -89,50 +89,46 @@ export function Stats(ticketsByDate: TicketsByDate) {
         </tr>
       </thead>
       <tbody>
-        ${
-    months.map(
-      (month, index) =>
-        html` <tr
-            class="${
-          new Date().getMonth() > index ? "bg-warning bg-opacity-10" : ""
-        }"
-          >
-            <th scope="row">${month.name}</th>
-            <td>
-              <span>${month.hoursWorked}h</span>
-              <span class="text-secondary"
-                >${(month.hoursWorked / 7).toFixed(1)}d</span
-              >
-              <span class="text-secondary"
-                >(${month.hoursWorked - month.hours7 > 0 ? "+" : ""}${
-          month.hoursWorked - month.hours7
-        }h
-                ${((month.hoursWorked - month.hours7) / 7).toFixed(1)}d)</span
-              >
-            </td>
-            <td>
-              <span class="text-secondary"
-                >(${month.soFarHoursWorked - month.soFarHours7 > 0 ? "+" : ""}${
-          month.soFarHoursWorked - month.soFarHours7
-        }h
-                ${
-          ((month.soFarHoursWorked - month.soFarHours7) / 7).toFixed(
-            1,
-          )
-        }d)</span
-              >
-            </td>
-            <td>
-              ${month.hours7}
-              <span class="text-secondary">(${month.hours7 / 7}d)</span>
-            </td>
-            <td>
-              ${month.hours8}
-              <span class="text-secondary">(${month.hours8 / 8}d)</span>
-            </td>
-          </tr>`,
-    )
-  }
+        ${months.map(
+          (month, index) =>
+            html` <tr
+              class="${new Date().getMonth() > index
+                ? "bg-warning bg-opacity-10"
+                : ""}"
+            >
+              <th scope="row">${month.name}</th>
+              <td>
+                <span>${month.hoursWorked}h</span>
+                <span class="text-secondary"
+                  >${(month.hoursWorked / 7).toFixed(1)}d</span
+                >
+                <span class="text-secondary"
+                  >(${month.hoursWorked - month.hours7 > 0
+                    ? "+"
+                    : ""}${month.hoursWorked - month.hours7}h
+                  ${((month.hoursWorked - month.hours7) / 7).toFixed(1)}d)</span
+                >
+              </td>
+              <td>
+                <span class="text-secondary"
+                  >(${month.soFarHoursWorked - month.soFarHours7 > 0
+                    ? "+"
+                    : ""}${month.soFarHoursWorked - month.soFarHours7}h
+                  ${((month.soFarHoursWorked - month.soFarHours7) / 7).toFixed(
+                    1
+                  )}d)</span
+                >
+              </td>
+              <td>
+                ${month.hours7}
+                <span class="text-secondary">(${month.hours7 / 7}d)</span>
+              </td>
+              <td>
+                ${month.hours8}
+                <span class="text-secondary">(${month.hours8 / 8}d)</span>
+              </td>
+            </tr>`
+        )}
         <tr class="bg-success bg-opacity-10">
           <th scope="row">celkem</th>
           <td>
@@ -143,9 +139,9 @@ export function Stats(ticketsByDate: TicketsByDate) {
           </td>
           <td>
             <span class="text-secondary"
-              >(${total.hoursWorked - total.hours7 > 0 ? "+" : ""}${
-    total.hoursWorked - total.hours7
-  }h
+              >(${total.hoursWorked - total.hours7 > 0
+                ? "+"
+                : ""}${total.hoursWorked - total.hours7}h
               ${((total.hoursWorked - total.hours7) / 7).toFixed(1)}d)</span
             >
           </td>
