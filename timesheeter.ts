@@ -101,7 +101,9 @@ async function logIntoTimesheeter(
     method: "POST",
   });
   if (response.status !== 200) {
-    throw new Error("Login to Timesheeter was not successful.");
+    throw new Error(
+      `Login to Timesheeter was not successful. Status is: ${response.status}, and body is: ${response.body}`
+    );
   }
   console.debug("Login to Timesheeter was successful");
   const cookies: string | null = response.headers.get("set-cookie");
