@@ -26,7 +26,7 @@ async function handleRequest(request: Request) {
     } catch (_) {
       // No params in a file, needs to be authorized
       console.debug(
-        "File 'params.json' is not present, authorization will be used"
+        "File 'params.json' is not present, authorization will be used",
       );
     }
 
@@ -74,7 +74,7 @@ async function handleRequest(request: Request) {
             headers: {
               "WWW-Authenticate": "Basic",
             },
-          }
+          },
         );
       }
       console.debug("HTML is ready to be served");

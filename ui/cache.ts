@@ -4,7 +4,7 @@ export type Cache<T> = {
 
 export function createCache<T>(
   fetchFunction: () => Promise<T>,
-  ttl: number
+  ttl: number,
 ): Cache<T> {
   const cache: Record<string, { date: Date; value: T | null }> = {};
   const isCacheExpired = (date: Date) =>
