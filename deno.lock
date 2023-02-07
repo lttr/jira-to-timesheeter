@@ -1,0 +1,32 @@
+{
+  "version": "2",
+  "remote": {
+    "https://cdn.skypack.dev/-/@js-temporal/polyfill@v0.4.3-lDkqhS92gOiNvjinGNRD/dist=es2019,mode=imports/optimized/@js-temporal/polyfill.js": "568a6ba87b29e3976956744c53450154b9d9d56119ce1a41a1e797ba0ef87797",
+    "https://cdn.skypack.dev/-/@js-temporal/polyfill@v0.4.3-lDkqhS92gOiNvjinGNRD/dist=es2019,mode=types/index.d.ts": "4f4b042e1576e3158508eb16cc39f35e215137c3f01f1fc45d205fe959cc205c",
+    "https://cdn.skypack.dev/-/@webreflection/mapset@v1.0.1-VAJb2itjjeIiaix3FxjV/dist=es2019,mode=imports/optimized/@webreflection/mapset.js": "df4c2b65c0780dff6b5bebe6f2386ed936cf3e0cfaef90030608c0bee4ba92a5",
+    "https://cdn.skypack.dev/-/@webreflection/uparser@v0.2.4-eikFk8K3V3oPPchBW7GD/dist=es2019,mode=imports/optimized/@webreflection/uparser.js": "6d90bbbc2076df9ebd5e9012c198f433600ce60ccc29f5948a0d009f7f342cb8",
+    "https://cdn.skypack.dev/-/async-tag@v0.2.0-AyzbI1AUVDY4ZWcP852q/dist=es2019,mode=imports/optimized/async-tag.js": "6dba77698506c73f6a89a50aa701dd365da13323b0d3dff64a912b5d76b37284",
+    "https://cdn.skypack.dev/-/date-easter@v1.0.2-tQaebiXucGmXplXJxAAf/dist=es2019,mode=imports/optimized/date-easter.js": "d18bfc6a22498d14cccd3cde87100f46419ec7fe7a49618a5737fbafee87c941",
+    "https://cdn.skypack.dev/-/date-easter@v1.0.2-tQaebiXucGmXplXJxAAf/dist=es2019,mode=types/types/index.d.ts": "8743d050b4e526c4832a4be61995591039b6bc35c1e6c65013ddbb6252047968",
+    "https://cdn.skypack.dev/-/html-escaper@v3.0.3-P9hGfumLfT7DfKjkekub/dist=es2019,mode=imports/optimized/html-escaper.js": "45c1b5e6b08009581c4767b6c69a5280191f280e5d6c0df02cb02b55766d70c9",
+    "https://cdn.skypack.dev/-/jsbi@v4.3.0-kIZpnz2AdjvBEZ3y3wsD/dist=es2019,mode=imports/optimized/jsbi.js": "2c4509126fe051032b527ee90fda3c162880383476f40cf95fecc9c76f2ec9c0",
+    "https://cdn.skypack.dev/-/uarray@v1.0.0-3PGwrJjcfs6QP5wLmXwL/dist=es2019,mode=imports/optimized/uarray.js": "4dd32c78bc1eeb545b5263385f0eb0e2fa626f56a55eb1a29e0b9846e369ec09",
+    "https://cdn.skypack.dev/-/uhandlers@v0.6.1-4yE0AIUEppYEI1M1LjjC/dist=es2019,mode=imports/optimized/uhandlers.js": "6af1ce0e3bed3eef742957508e6913def559eedf3aa18e85db051c688be2d94b",
+    "https://cdn.skypack.dev/-/uhtml-ssr@v0.9.1-fmjBKusq9vdjC6TRE36i/dist=es2019,mode=imports/optimized/uhtml-ssr.js": "4488793f8760a8c8a62a49705f96dbff4a5ee4afef71f115778e1bea6d8bfd1c",
+    "https://cdn.skypack.dev/-/uhtml-ssr@v0.9.1-fmjBKusq9vdjC6TRE36i/dist=es2019,mode=imports/optimized/uhtml-ssr/async.js": "a74c7aa2b89161e155243e42e12cf7ce46c82be615a8cb09e2abf87a6cde96c3",
+    "https://cdn.skypack.dev/-/uhyphen@v0.1.0-I8vzzzfpdihpA00uAdb1/dist=es2019,mode=imports/optimized/uhyphen.js": "6544e53d676f27dd2f120292c483afb715dee6513587a0c52b15a3408b93aa77",
+    "https://cdn.skypack.dev/@js-temporal/polyfill?dts": "e6c24ceba3938914e4df447a82084221ff3a0232da4694249627f920fd266265",
+    "https://cdn.skypack.dev/date-easter?dts": "eadfdc919bf89d2cddfd4c8d2ae097344f073f22b2276f2fa97fa7abcb5c1e53",
+    "https://cdn.skypack.dev/uhtml-ssr/async?dts": "1fde35710e78954b822264c228f2c075fcd1a2518628516f70c4a776c7ac97ab",
+    "https://deno.land/std@0.144.0/async/abortable.ts": "87aa7230be8360c24ad437212311c9e8d4328854baec27b4c7abb26e85515c06",
+    "https://deno.land/std@0.144.0/async/deadline.ts": "48ac998d7564969f3e6ec6b6f9bf0217ebd00239b1b2292feba61272d5dd58d0",
+    "https://deno.land/std@0.144.0/async/debounce.ts": "564273ef242bcfcda19a439132f940db8694173abffc159ea34f07d18fc42620",
+    "https://deno.land/std@0.144.0/async/deferred.ts": "bc18e28108252c9f67dfca2bbc4587c3cbf3aeb6e155f8c864ca8ecff992b98a",
+    "https://deno.land/std@0.144.0/async/delay.ts": "cbbdf1c87d1aed8edc7bae13592fb3e27e3106e0748f089c263390d4f49e5f6c",
+    "https://deno.land/std@0.144.0/async/mod.ts": "9852cd8ed897ab2d41a8fbee611d574e97898327db5c19d9d58e41126473f02c",
+    "https://deno.land/std@0.144.0/async/mux_async_iterator.ts": "5b4aca6781ad0f2e19ccdf1d1a1c092ccd3e00d52050d9c27c772658c8367256",
+    "https://deno.land/std@0.144.0/async/pool.ts": "ef9eb97b388543acbf0ac32647121e4dbe629236899586c4d4311a8770fbb239",
+    "https://deno.land/std@0.144.0/async/tee.ts": "bcfae0017ebb718cf4eef9e2420e8675d91cb1bcc0ed9b668681af6e6caad846",
+    "https://deno.land/std@0.144.0/http/server.ts": "0b0a9f3abfcfecead944b31ee9098a0c11a59b0495bf873ee200eb80e7441483"
+  }
+}
