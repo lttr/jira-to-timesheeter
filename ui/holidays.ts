@@ -75,7 +75,11 @@ export const beginningOfTheYear = Temporal.Now.plainDateISO().with({
 });
 
 // export const today = Temporal.Now.plainDateISO();
-export const today = Temporal.Instant.from("2022-12-31");
+export const today = Temporal.PlainDate.from({
+  year: 2022,
+  month: 12,
+  day: 31,
+});
 
 export function formatCzechDate(date: Temporal.PlainDate) {
   const options = { month: "numeric", day: "numeric" } as const;
