@@ -1,0 +1,1050 @@
+{
+  "items": [
+    {
+      "id": "35915",
+      "ticket": "HAN-0",
+      "project": "HB - Hanaboso",
+      "desc": "Baustore",
+      "date": {
+        "date": "2023-02-20 00:00:00.000000",
+        "timezone_type": 3,
+        "timezone": "UTC"
+      },
+      "time": 3,
+      "homeOffice": true,
+      "fullTime": false,
+      "startTime": null,
+      "deleted": false,
+      "externalId": null
+    },
+    {
+      "id": "35914",
+      "ticket": "HAN-0",
+      "project": "HB - Hanaboso",
+      "desc": "Baustore",
+      "date": {
+        "date": "2023-02-17 00:00:00.000000",
+        "timezone_type": 3,
+        "timezone": "UTC"
+      },
+      "time": 9,
+      "homeOffice": true,
+      "fullTime": false,
+      "startTime": null,
+      "deleted": false,
+      "externalId": null
+    },
+    {
+      "id": "35913",
+      "ticket": "HAN-0",
+      "project": "HB - Hanaboso",
+      "desc": "Baustore",
+      "date": {
+        "date": "2023-02-16 00:00:00.000000",
+        "timezone_type": 3,
+        "timezone": "UTC"
+      },
+      "time": 8,
+      "homeOffice": true,
+      "fullTime": false,
+      "startTime": null,
+      "deleted": false,
+      "externalId": null
+    },
+    {
+      "id": "35912",
+      "ticket": "HAN-0",
+      "project": "HB - Hanaboso",
+      "desc": "Baustore",
+      "date": {
+        "date": "2023-02-15 00:00:00.000000",
+        "timezone_type": 3,
+        "timezone": "UTC"
+      },
+      "time": 9,
+      "homeOffice": true,
+      "fullTime": false,
+      "startTime": null,
+      "deleted": false,
+      "externalId": null
+    },
+    {
+      "id": "35911",
+      "ticket": "HAN-0",
+      "project": "HB - Hanaboso",
+      "desc": "Baustore",
+      "date": {
+        "date": "2023-02-14 00:00:00.000000",
+        "timezone_type": 3,
+        "timezone": "UTC"
+      },
+      "time": 10,
+      "homeOffice": true,
+      "fullTime": false,
+      "startTime": null,
+      "deleted": false,
+      "externalId": null
+    },
+    {
+      "id": "35910",
+      "ticket": "HAN-8",
+      "project": "HB - Hanaboso",
+      "desc": "Baustore",
+      "date": {
+        "date": "2023-02-13 00:00:00.000000",
+        "timezone_type": 3,
+        "timezone": "UTC"
+      },
+      "time": 8,
+      "homeOffice": true,
+      "fullTime": false,
+      "startTime": null,
+      "deleted": false,
+      "externalId": null
+    },
+    {
+      "id": "35909",
+      "ticket": "HAN-0",
+      "project": "HB - Hanaboso",
+      "desc": "Baustore",
+      "date": {
+        "date": "2023-02-10 00:00:00.000000",
+        "timezone_type": 3,
+        "timezone": "UTC"
+      },
+      "time": 6,
+      "homeOffice": true,
+      "fullTime": false,
+      "startTime": null,
+      "deleted": false,
+      "externalId": null
+    },
+    {
+      "id": "35908",
+      "ticket": "HAN-0",
+      "project": "HB - Hanaboso",
+      "desc": "Baustore",
+      "date": {
+        "date": "2023-02-09 00:00:00.000000",
+        "timezone_type": 3,
+        "timezone": "UTC"
+      },
+      "time": 4,
+      "homeOffice": true,
+      "fullTime": false,
+      "startTime": null,
+      "deleted": false,
+      "externalId": null
+    },
+    {
+      "id": "35746",
+      "ticket": "HAN-135",
+      "project": "HB - Hanaboso",
+      "desc": null,
+      "date": {
+        "date": "2023-01-25 00:00:00.000000",
+        "timezone_type": 3,
+        "timezone": "UTC"
+      },
+      "time": 1,
+      "homeOffice": true,
+      "fullTime": false,
+      "startTime": null,
+      "deleted": false,
+      "externalId": null
+    },
+    {
+      "id": "35747",
+      "ticket": "PIP-1212",
+      "project": "HB - Pipes",
+      "desc": null,
+      "date": {
+        "date": "2023-01-25 00:00:00.000000",
+        "timezone_type": 3,
+        "timezone": "UTC"
+      },
+      "time": 1.5,
+      "homeOffice": true,
+      "fullTime": false,
+      "startTime": null,
+      "deleted": false,
+      "externalId": null
+    },
+    {
+      "id": "35743",
+      "ticket": "HAN-135",
+      "project": "HB - Hanaboso",
+      "desc": null,
+      "date": {
+        "date": "2023-01-24 00:00:00.000000",
+        "timezone_type": 3,
+        "timezone": "UTC"
+      },
+      "time": 1.5,
+      "homeOffice": true,
+      "fullTime": false,
+      "startTime": null,
+      "deleted": false,
+      "externalId": null
+    },
+    {
+      "id": "35744",
+      "ticket": "HAN-41",
+      "project": "HB - Hanaboso",
+      "desc": "baustore",
+      "date": {
+        "date": "2023-01-24 00:00:00.000000",
+        "timezone_type": 3,
+        "timezone": "UTC"
+      },
+      "time": 2.5,
+      "homeOffice": true,
+      "fullTime": false,
+      "startTime": null,
+      "deleted": false,
+      "externalId": null
+    },
+    {
+      "id": "35745",
+      "ticket": "PIP-1212",
+      "project": "HB - Pipes",
+      "desc": null,
+      "date": {
+        "date": "2023-01-24 00:00:00.000000",
+        "timezone_type": 3,
+        "timezone": "UTC"
+      },
+      "time": 2,
+      "homeOffice": true,
+      "fullTime": false,
+      "startTime": null,
+      "deleted": false,
+      "externalId": null
+    },
+    {
+      "id": "35733",
+      "ticket": "HAN-41",
+      "project": "HB - Hanaboso",
+      "desc": "baustore",
+      "date": {
+        "date": "2023-01-23 00:00:00.000000",
+        "timezone_type": 3,
+        "timezone": "UTC"
+      },
+      "time": 3,
+      "homeOffice": true,
+      "fullTime": false,
+      "startTime": null,
+      "deleted": false,
+      "externalId": null
+    },
+    {
+      "id": "35731",
+      "ticket": "PIP-1541",
+      "project": "HB - Pipes",
+      "desc": null,
+      "date": {
+        "date": "2023-01-23 00:00:00.000000",
+        "timezone_type": 3,
+        "timezone": "UTC"
+      },
+      "time": 2,
+      "homeOffice": true,
+      "fullTime": false,
+      "startTime": null,
+      "deleted": false,
+      "externalId": null
+    },
+    {
+      "id": "35732",
+      "ticket": "HAN-135",
+      "project": "HB - Hanaboso",
+      "desc": null,
+      "date": {
+        "date": "2023-01-23 00:00:00.000000",
+        "timezone_type": 3,
+        "timezone": "UTC"
+      },
+      "time": 1,
+      "homeOffice": true,
+      "fullTime": false,
+      "startTime": null,
+      "deleted": false,
+      "externalId": null
+    },
+    {
+      "id": "35702",
+      "ticket": "HAN-135",
+      "project": "HB - Hanaboso",
+      "desc": null,
+      "date": {
+        "date": "2023-01-20 00:00:00.000000",
+        "timezone_type": 3,
+        "timezone": "UTC"
+      },
+      "time": 1,
+      "homeOffice": true,
+      "fullTime": false,
+      "startTime": null,
+      "deleted": false,
+      "externalId": null
+    },
+    {
+      "id": "35704",
+      "ticket": "PIP-1547",
+      "project": "HB - Pipes",
+      "desc": null,
+      "date": {
+        "date": "2023-01-20 00:00:00.000000",
+        "timezone_type": 3,
+        "timezone": "UTC"
+      },
+      "time": 1,
+      "homeOffice": true,
+      "fullTime": false,
+      "startTime": null,
+      "deleted": false,
+      "externalId": null
+    },
+    {
+      "id": "35705",
+      "ticket": "HAN-41",
+      "project": "HB - Hanaboso",
+      "desc": "baustore",
+      "date": {
+        "date": "2023-01-20 00:00:00.000000",
+        "timezone_type": 3,
+        "timezone": "UTC"
+      },
+      "time": 4,
+      "homeOffice": true,
+      "fullTime": false,
+      "startTime": null,
+      "deleted": false,
+      "externalId": null
+    },
+    {
+      "id": "35706",
+      "ticket": "HAN-41",
+      "project": "HB - Hanaboso",
+      "desc": "baustore",
+      "date": {
+        "date": "2023-01-19 00:00:00.000000",
+        "timezone_type": 3,
+        "timezone": "UTC"
+      },
+      "time": 2,
+      "homeOffice": true,
+      "fullTime": false,
+      "startTime": null,
+      "deleted": false,
+      "externalId": null
+    },
+    {
+      "id": "35703",
+      "ticket": "HAN-135",
+      "project": "HB - Hanaboso",
+      "desc": null,
+      "date": {
+        "date": "2023-01-19 00:00:00.000000",
+        "timezone_type": 3,
+        "timezone": "UTC"
+      },
+      "time": 0.5,
+      "homeOffice": true,
+      "fullTime": false,
+      "startTime": null,
+      "deleted": false,
+      "externalId": null
+    },
+    {
+      "id": "35707",
+      "ticket": "PIP-1541",
+      "project": "HB - Pipes",
+      "desc": null,
+      "date": {
+        "date": "2023-01-19 00:00:00.000000",
+        "timezone_type": 3,
+        "timezone": "UTC"
+      },
+      "time": 2,
+      "homeOffice": true,
+      "fullTime": false,
+      "startTime": null,
+      "deleted": false,
+      "externalId": null
+    },
+    {
+      "id": "35676",
+      "ticket": "PIP-1541",
+      "project": "HB - Pipes",
+      "desc": null,
+      "date": {
+        "date": "2023-01-18 00:00:00.000000",
+        "timezone_type": 3,
+        "timezone": "UTC"
+      },
+      "time": 3,
+      "homeOffice": true,
+      "fullTime": false,
+      "startTime": null,
+      "deleted": false,
+      "externalId": null
+    },
+    {
+      "id": "35677",
+      "ticket": "HAN-135",
+      "project": "HB - Hanaboso",
+      "desc": null,
+      "date": {
+        "date": "2023-01-18 00:00:00.000000",
+        "timezone_type": 3,
+        "timezone": "UTC"
+      },
+      "time": 0.5,
+      "homeOffice": true,
+      "fullTime": false,
+      "startTime": null,
+      "deleted": false,
+      "externalId": null
+    },
+    {
+      "id": "35678",
+      "ticket": "PIP-1212",
+      "project": "HB - Pipes",
+      "desc": null,
+      "date": {
+        "date": "2023-01-18 00:00:00.000000",
+        "timezone_type": 3,
+        "timezone": "UTC"
+      },
+      "time": 0.5,
+      "homeOffice": true,
+      "fullTime": false,
+      "startTime": null,
+      "deleted": false,
+      "externalId": null
+    },
+    {
+      "id": "35670",
+      "ticket": "PIP-1190",
+      "project": "HB - Pipes",
+      "desc": null,
+      "date": {
+        "date": "2023-01-17 00:00:00.000000",
+        "timezone_type": 3,
+        "timezone": "UTC"
+      },
+      "time": 1,
+      "homeOffice": true,
+      "fullTime": false,
+      "startTime": null,
+      "deleted": false,
+      "externalId": null
+    },
+    {
+      "id": "35665",
+      "ticket": "HAN-135",
+      "project": "HB - Hanaboso",
+      "desc": null,
+      "date": {
+        "date": "2023-01-17 00:00:00.000000",
+        "timezone_type": 3,
+        "timezone": "UTC"
+      },
+      "time": 1.5,
+      "homeOffice": true,
+      "fullTime": false,
+      "startTime": null,
+      "deleted": false,
+      "externalId": null
+    },
+    {
+      "id": "35666",
+      "ticket": "PIP-1484",
+      "project": "HB - Pipes",
+      "desc": null,
+      "date": {
+        "date": "2023-01-17 00:00:00.000000",
+        "timezone_type": 3,
+        "timezone": "UTC"
+      },
+      "time": 0.5,
+      "homeOffice": true,
+      "fullTime": false,
+      "startTime": null,
+      "deleted": false,
+      "externalId": null
+    },
+    {
+      "id": "35667",
+      "ticket": "PIP-1463",
+      "project": "HB - Pipes",
+      "desc": null,
+      "date": {
+        "date": "2023-01-17 00:00:00.000000",
+        "timezone_type": 3,
+        "timezone": "UTC"
+      },
+      "time": 0.5,
+      "homeOffice": true,
+      "fullTime": false,
+      "startTime": null,
+      "deleted": false,
+      "externalId": null
+    },
+    {
+      "id": "35656",
+      "ticket": "PIP-1538",
+      "project": "HB - Pipes",
+      "desc": null,
+      "date": {
+        "date": "2023-01-16 00:00:00.000000",
+        "timezone_type": 3,
+        "timezone": "UTC"
+      },
+      "time": 1,
+      "homeOffice": true,
+      "fullTime": false,
+      "startTime": null,
+      "deleted": false,
+      "externalId": null
+    },
+    {
+      "id": "35654",
+      "ticket": "HAN-135",
+      "project": "HB - Hanaboso",
+      "desc": null,
+      "date": {
+        "date": "2023-01-16 00:00:00.000000",
+        "timezone_type": 3,
+        "timezone": "UTC"
+      },
+      "time": 0.5,
+      "homeOffice": true,
+      "fullTime": false,
+      "startTime": null,
+      "deleted": false,
+      "externalId": null
+    },
+    {
+      "id": "35655",
+      "ticket": "PIP-1527",
+      "project": "HB - Pipes",
+      "desc": null,
+      "date": {
+        "date": "2023-01-16 00:00:00.000000",
+        "timezone_type": 3,
+        "timezone": "UTC"
+      },
+      "time": 0.5,
+      "homeOffice": true,
+      "fullTime": false,
+      "startTime": null,
+      "deleted": false,
+      "externalId": null
+    },
+    {
+      "id": "35642",
+      "ticket": "PIP-1527",
+      "project": "HB - Pipes",
+      "desc": null,
+      "date": {
+        "date": "2023-01-13 00:00:00.000000",
+        "timezone_type": 3,
+        "timezone": "UTC"
+      },
+      "time": 3,
+      "homeOffice": true,
+      "fullTime": false,
+      "startTime": null,
+      "deleted": false,
+      "externalId": null
+    },
+    {
+      "id": "35643",
+      "ticket": "PIP-1528",
+      "project": "HB - Pipes",
+      "desc": null,
+      "date": {
+        "date": "2023-01-13 00:00:00.000000",
+        "timezone_type": 3,
+        "timezone": "UTC"
+      },
+      "time": 2,
+      "homeOffice": true,
+      "fullTime": false,
+      "startTime": null,
+      "deleted": false,
+      "externalId": null
+    },
+    {
+      "id": "35641",
+      "ticket": "HAN-135",
+      "project": "HB - Hanaboso",
+      "desc": null,
+      "date": {
+        "date": "2023-01-13 00:00:00.000000",
+        "timezone_type": 3,
+        "timezone": "UTC"
+      },
+      "time": 1,
+      "homeOffice": true,
+      "fullTime": false,
+      "startTime": null,
+      "deleted": false,
+      "externalId": null
+    },
+    {
+      "id": "35632",
+      "ticket": "HAN-0",
+      "project": "HB - Hanaboso",
+      "desc": "standup",
+      "date": {
+        "date": "2023-01-12 00:00:00.000000",
+        "timezone_type": 3,
+        "timezone": "UTC"
+      },
+      "time": 0.5,
+      "homeOffice": true,
+      "fullTime": false,
+      "startTime": null,
+      "deleted": false,
+      "externalId": null
+    },
+    {
+      "id": "35633",
+      "ticket": "PIP-1528",
+      "project": "HB - Pipes",
+      "desc": null,
+      "date": {
+        "date": "2023-01-12 00:00:00.000000",
+        "timezone_type": 3,
+        "timezone": "UTC"
+      },
+      "time": 4,
+      "homeOffice": true,
+      "fullTime": false,
+      "startTime": null,
+      "deleted": false,
+      "externalId": null
+    },
+    {
+      "id": "35634",
+      "ticket": "PIP-0",
+      "project": "HB - Pipes",
+      "desc": null,
+      "date": {
+        "date": "2023-01-12 00:00:00.000000",
+        "timezone_type": 3,
+        "timezone": "UTC"
+      },
+      "time": 1,
+      "homeOffice": true,
+      "fullTime": false,
+      "startTime": null,
+      "deleted": false,
+      "externalId": null
+    },
+    {
+      "id": "35625",
+      "ticket": "PIP-1528",
+      "project": "HB - Pipes",
+      "desc": null,
+      "date": {
+        "date": "2023-01-11 00:00:00.000000",
+        "timezone_type": 3,
+        "timezone": "UTC"
+      },
+      "time": 4,
+      "homeOffice": true,
+      "fullTime": false,
+      "startTime": null,
+      "deleted": false,
+      "externalId": null
+    },
+    {
+      "id": "35626",
+      "ticket": "PIP-1527",
+      "project": "HB - Pipes",
+      "desc": null,
+      "date": {
+        "date": "2023-01-11 00:00:00.000000",
+        "timezone_type": 3,
+        "timezone": "UTC"
+      },
+      "time": 2,
+      "homeOffice": true,
+      "fullTime": false,
+      "startTime": null,
+      "deleted": false,
+      "externalId": null
+    },
+    {
+      "id": "35620",
+      "ticket": "PIP-1528",
+      "project": "HB - Pipes",
+      "desc": null,
+      "date": {
+        "date": "2023-01-10 00:00:00.000000",
+        "timezone_type": 3,
+        "timezone": "UTC"
+      },
+      "time": 7,
+      "homeOffice": true,
+      "fullTime": false,
+      "startTime": null,
+      "deleted": false,
+      "externalId": null
+    },
+    {
+      "id": "35612",
+      "ticket": "PIP-1527",
+      "project": "HB - Pipes",
+      "desc": null,
+      "date": {
+        "date": "2023-01-09 00:00:00.000000",
+        "timezone_type": 3,
+        "timezone": "UTC"
+      },
+      "time": 0.5,
+      "homeOffice": true,
+      "fullTime": false,
+      "startTime": null,
+      "deleted": false,
+      "externalId": null
+    },
+    {
+      "id": "35610",
+      "ticket": "HAN-0",
+      "project": "HB - Hanaboso",
+      "desc": "standup",
+      "date": {
+        "date": "2023-01-09 00:00:00.000000",
+        "timezone_type": 3,
+        "timezone": "UTC"
+      },
+      "time": 0.5,
+      "homeOffice": true,
+      "fullTime": false,
+      "startTime": null,
+      "deleted": false,
+      "externalId": null
+    },
+    {
+      "id": "35611",
+      "ticket": "PIP-1528",
+      "project": "HB - Pipes",
+      "desc": null,
+      "date": {
+        "date": "2023-01-09 00:00:00.000000",
+        "timezone_type": 3,
+        "timezone": "UTC"
+      },
+      "time": 4,
+      "homeOffice": true,
+      "fullTime": false,
+      "startTime": null,
+      "deleted": false,
+      "externalId": null
+    },
+    {
+      "id": "35593",
+      "ticket": "PIP-1527",
+      "project": "HB - Pipes",
+      "desc": null,
+      "date": {
+        "date": "2023-01-06 00:00:00.000000",
+        "timezone_type": 3,
+        "timezone": "UTC"
+      },
+      "time": 0.5,
+      "homeOffice": true,
+      "fullTime": false,
+      "startTime": null,
+      "deleted": false,
+      "externalId": null
+    },
+    {
+      "id": "35594",
+      "ticket": "PIP-1528",
+      "project": "HB - Pipes",
+      "desc": null,
+      "date": {
+        "date": "2023-01-06 00:00:00.000000",
+        "timezone_type": 3,
+        "timezone": "UTC"
+      },
+      "time": 5.5,
+      "homeOffice": true,
+      "fullTime": false,
+      "startTime": null,
+      "deleted": false,
+      "externalId": null
+    },
+    {
+      "id": "35592",
+      "ticket": "HAN-0",
+      "project": "HB - Hanaboso",
+      "desc": "standup",
+      "date": {
+        "date": "2023-01-06 00:00:00.000000",
+        "timezone_type": 3,
+        "timezone": "UTC"
+      },
+      "time": 0.5,
+      "homeOffice": true,
+      "fullTime": false,
+      "startTime": null,
+      "deleted": false,
+      "externalId": null
+    },
+    {
+      "id": "35589",
+      "ticket": "HAN-0",
+      "project": "HB - Hanaboso",
+      "desc": "tl meeting",
+      "date": {
+        "date": "2023-01-05 00:00:00.000000",
+        "timezone_type": 3,
+        "timezone": "UTC"
+      },
+      "time": 2.5,
+      "homeOffice": true,
+      "fullTime": false,
+      "startTime": null,
+      "deleted": false,
+      "externalId": null
+    },
+    {
+      "id": "35590",
+      "ticket": "PIP-1527",
+      "project": "HB - Pipes",
+      "desc": null,
+      "date": {
+        "date": "2023-01-05 00:00:00.000000",
+        "timezone_type": 3,
+        "timezone": "UTC"
+      },
+      "time": 2,
+      "homeOffice": true,
+      "fullTime": false,
+      "startTime": null,
+      "deleted": false,
+      "externalId": null
+    },
+    {
+      "id": "35591",
+      "ticket": "PIP-1528",
+      "project": "HB - Pipes",
+      "desc": null,
+      "date": {
+        "date": "2023-01-05 00:00:00.000000",
+        "timezone_type": 3,
+        "timezone": "UTC"
+      },
+      "time": 2.5,
+      "homeOffice": true,
+      "fullTime": false,
+      "startTime": null,
+      "deleted": false,
+      "externalId": null
+    },
+    {
+      "id": "35588",
+      "ticket": "HAN-0",
+      "project": "HB - Hanaboso",
+      "desc": "standup",
+      "date": {
+        "date": "2023-01-05 00:00:00.000000",
+        "timezone_type": 3,
+        "timezone": "UTC"
+      },
+      "time": 0.5,
+      "homeOffice": true,
+      "fullTime": false,
+      "startTime": null,
+      "deleted": false,
+      "externalId": null
+    },
+    {
+      "id": "35568",
+      "ticket": "PIP-1527",
+      "project": "HB - Pipes",
+      "desc": null,
+      "date": {
+        "date": "2023-01-04 00:00:00.000000",
+        "timezone_type": 3,
+        "timezone": "UTC"
+      },
+      "time": 2,
+      "homeOffice": true,
+      "fullTime": false,
+      "startTime": null,
+      "deleted": false,
+      "externalId": null
+    },
+    {
+      "id": "35570",
+      "ticket": "PIP-0",
+      "project": "HB - Pipes",
+      "desc": "P\u0159\u00edprava na tvorbu connector\u016f, dokumentace orchesty",
+      "date": {
+        "date": "2023-01-04 00:00:00.000000",
+        "timezone_type": 3,
+        "timezone": "UTC"
+      },
+      "time": 4,
+      "homeOffice": true,
+      "fullTime": false,
+      "startTime": null,
+      "deleted": false,
+      "externalId": null
+    },
+    {
+      "id": "35571",
+      "ticket": "HAN-0",
+      "project": "HB - Hanaboso",
+      "desc": "standup",
+      "date": {
+        "date": "2023-01-04 00:00:00.000000",
+        "timezone_type": 3,
+        "timezone": "UTC"
+      },
+      "time": 0.5,
+      "homeOffice": true,
+      "fullTime": false,
+      "startTime": null,
+      "deleted": false,
+      "externalId": null
+    },
+    {
+      "id": "35553",
+      "ticket": "HAN-0",
+      "project": "HB - Hanaboso",
+      "desc": "standup",
+      "date": {
+        "date": "2023-01-03 00:00:00.000000",
+        "timezone_type": 3,
+        "timezone": "UTC"
+      },
+      "time": 0.5,
+      "homeOffice": true,
+      "fullTime": false,
+      "startTime": null,
+      "deleted": false,
+      "externalId": null
+    },
+    {
+      "id": "35554",
+      "ticket": "PIP-1481",
+      "project": "HB - Pipes",
+      "desc": null,
+      "date": {
+        "date": "2023-01-03 00:00:00.000000",
+        "timezone_type": 3,
+        "timezone": "UTC"
+      },
+      "time": 0.5,
+      "homeOffice": true,
+      "fullTime": false,
+      "startTime": null,
+      "deleted": false,
+      "externalId": null
+    },
+    {
+      "id": "35555",
+      "ticket": "PIP-1388",
+      "project": "HB - Pipes",
+      "desc": null,
+      "date": {
+        "date": "2023-01-03 00:00:00.000000",
+        "timezone_type": 3,
+        "timezone": "UTC"
+      },
+      "time": 5.5,
+      "homeOffice": true,
+      "fullTime": false,
+      "startTime": null,
+      "deleted": false,
+      "externalId": null
+    },
+    {
+      "id": "35544",
+      "ticket": "PIP-1388",
+      "project": "HB - Pipes",
+      "desc": null,
+      "date": {
+        "date": "2023-01-02 00:00:00.000000",
+        "timezone_type": 3,
+        "timezone": "UTC"
+      },
+      "time": 6,
+      "homeOffice": true,
+      "fullTime": false,
+      "startTime": null,
+      "deleted": false,
+      "externalId": null
+    },
+    {
+      "id": "35542",
+      "ticket": "HAN-0",
+      "project": "HB - Hanaboso",
+      "desc": "standup",
+      "date": {
+        "date": "2023-01-02 00:00:00.000000",
+        "timezone_type": 3,
+        "timezone": "UTC"
+      },
+      "time": 0.5,
+      "homeOffice": true,
+      "fullTime": false,
+      "startTime": null,
+      "deleted": false,
+      "externalId": null
+    },
+    {
+      "id": "35543",
+      "ticket": "PIP-0",
+      "project": "HB - Pipes",
+      "desc": "code review",
+      "date": {
+        "date": "2023-01-02 00:00:00.000000",
+        "timezone_type": 3,
+        "timezone": "UTC"
+      },
+      "time": 0.5,
+      "homeOffice": true,
+      "fullTime": false,
+      "startTime": null,
+      "deleted": false,
+      "externalId": null
+    }
+  ],
+  "filter": [
+    [
+      {
+        "column": "date",
+        "operator": "BETWEEN",
+        "value": [
+          "2023-01-01",
+          "2023-02-28"
+        ]
+      }
+    ]
+  ],
+  "sorter": [
+    {
+      "column": "date",
+      "direction": "DESC"
+    }
+  ],
+  "paging": {
+    "page": 1,
+    "itemsPerPage": 100,
+    "total": 60,
+    "nextPage": 1,
+    "lastPage": 1,
+    "previousPage": 1
+  }
+}
